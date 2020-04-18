@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HCrawler.Api.Repositories;
-using HCrawler.Api.Repositories.Models;
+using HCrawler.Core.Repositories;
+using HCrawler.Core.Repositories.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -25,9 +25,9 @@ namespace HCrawler.Api.Controllers
             Ok(_imageRepository.GetAll());
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Image image)
+        public async Task<IActionResult> Post([FromBody] CreateImage createImage)
         {
-            await _imageRepository.CreateImageAsync(image);
+            await _imageRepository.CreateImageAsync(createImage);
             return Ok();
         }
     }

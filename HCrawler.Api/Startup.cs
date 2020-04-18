@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using HCrawler.Api.DB;
 using HCrawler.Api.DB.Repositories;
-using HCrawler.Api.Repositories;
+using HCrawler.Core.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,7 +40,7 @@ namespace HCrawler.Api
                 options.UseNpgsql(_configuration["ConnectionString"]));
 
             services.AddScoped<IImageRepository, ImageRepository>();
-            
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -82,10 +82,7 @@ namespace HCrawler.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });

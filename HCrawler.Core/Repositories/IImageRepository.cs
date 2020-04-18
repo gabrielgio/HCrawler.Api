@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HCrawler.Api.Repositories.Models;
+using HCrawler.Core.Repositories.Models;
 
-namespace HCrawler.Api.Repositories
+namespace HCrawler.Core.Repositories
 {
     public interface IImageRepository
     {
         IEnumerable<Image> GetAll();
 
-        Task CreateImageAsync(Image image);
+        Task CreateImageAsync(CreateImage image);
     }
 }

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Api", "HCrawler.Api\HCrawler.Api.csproj", "{CAEA08A4-27DF-4A96-8179-846FD5A7436B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Core", "HCrawler.Core\HCrawler.Core.csproj", "{2C432159-1698-4B15-B47C-F8104FADB517}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{CAEA08A4-27DF-4A96-8179-846FD5A7436B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAEA08A4-27DF-4A96-8179-846FD5A7436B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAEA08A4-27DF-4A96-8179-846FD5A7436B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C432159-1698-4B15-B47C-F8104FADB517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C432159-1698-4B15-B47C-F8104FADB517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C432159-1698-4B15-B47C-F8104FADB517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C432159-1698-4B15-B47C-F8104FADB517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

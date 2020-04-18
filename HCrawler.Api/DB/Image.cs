@@ -7,6 +7,7 @@ namespace HCrawler.Api.DB
         public int Id { get; set; }
         public int ProfileId { get; set; }
         public string Path { get; set; }
+        public string Url { get; set; }
         public DateTime CreatedOn { get; set; }
 
         public Profile Profile { get; set; }

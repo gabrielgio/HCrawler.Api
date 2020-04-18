@@ -30,12 +30,19 @@ namespace HCrawler.Api.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Path")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ProfileId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Url")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Path")
+                        .IsUnique();
 
                     b.HasIndex("ProfileId");
 
@@ -61,6 +68,9 @@ namespace HCrawler.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.HasIndex("SourceId");
 
                     b.ToTable("Profiles");
@@ -82,6 +92,9 @@ namespace HCrawler.Api.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Sources");
                 });

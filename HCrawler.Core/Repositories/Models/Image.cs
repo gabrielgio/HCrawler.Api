@@ -1,11 +1,7 @@
-namespace HCrawler.Api.Repositories.Models
+namespace HCrawler.Core.Repositories.Models
 {
     public class Image
     {
-        public Image()
-        {
-        }
-
         public Image(int id, string path, Profile profile)
         {
             Id = id;

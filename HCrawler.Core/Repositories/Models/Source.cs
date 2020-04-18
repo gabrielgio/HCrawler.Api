@@ -1,13 +1,7 @@
-using System.Collections.Generic;
-
-namespace HCrawler.Api.Repositories.Models
+namespace HCrawler.Core.Repositories.Models
 {
     public class Source
     {
-        public Source()
-        {
-        }
-
         public Source(string name, string url)
         {
             Name = name;
