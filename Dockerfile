@@ -4,6 +4,7 @@ WORKDIR /app
 COPY HCrawler.Api.sln .
 COPY HCrawler.Api/HCrawler.Api.csproj ./HCrawler.Api/
 COPY HCrawler.Core/HCrawler.Core.csproj ./HCrawler.Core/
+COPY HCrawler.Test/HCrawler.Test.csproj ./HCrawler.Core/
 RUN dotnet restore
 
 COPY . .
