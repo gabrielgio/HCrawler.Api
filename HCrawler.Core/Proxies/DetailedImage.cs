@@ -1,8 +1,8 @@
 namespace HCrawler.Core.Repositories.Models
 {
-    public class Image
+    public class DetailedImage
     {
-        public Image(int id, string path, Profile profile)
+        public DetailedImage(int id, string path, DetailedProfile profile)
         {
             Id = id;
             Path = path;
@@ -11,6 +11,6 @@ namespace HCrawler.Core.Repositories.Models
 
         public int Id { get; set; }
         public string Path { get; set; }
-        public Profile Profile { get; set; }
+        public DetailedProfile Profile { get; set; }
     }
 }

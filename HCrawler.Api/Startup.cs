@@ -1,24 +1,15 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using HCrawler.Api.DB;
 using HCrawler.Api.DB.Repositories;
 using HCrawler.Core.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace HCrawler.Api
@@ -44,14 +35,12 @@ namespace HCrawler.Api
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Recipe API",
-                    Version = "v1",
-                    Description = "If you got here you know what it does"
-                });
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Recipe API", Version = "v1", Description = "If you got here you know what it does"
+                    });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-
                 {
                     Description =
                         "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -65,11 +54,7 @@ namespace HCrawler.Api
                     {
                         new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
+                            Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "Bearer"}
                         },
                         new string[] { }
                     }
@@ -82,7 +67,10 @@ namespace HCrawler.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });

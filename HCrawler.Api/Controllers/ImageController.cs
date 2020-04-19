@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HCrawler.Core.Repositories;
+﻿using System.Threading.Tasks;
+using HCrawler.Core;
 using HCrawler.Core.Repositories.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace HCrawler.Api.Controllers
 {
@@ -13,21 +9,23 @@ namespace HCrawler.Api.Controllers
     [Route("[controller]")]
     public class ImageController : ControllerBase
     {
-        private readonly IImageRepository _imageRepository;
+        private readonly Image _image;
 
-        public ImageController(IImageRepository imageRepository)
+        public ImageController(Image image)
         {
-            _imageRepository = imageRepository;
+            _image = image;
         }
 
         [HttpGet]
-        public IActionResult Get() =>
-            Ok(_imageRepository.GetAll());
+        public IActionResult Get()
+        {
+            return Ok(_image.GetAll());
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateImage createImage)
         {
-            await _imageRepository.CreateImageAsync(createImage);
+            await _image.CreateImageIfNotExistsAsync(createImage);
             return Ok();
         }
     }

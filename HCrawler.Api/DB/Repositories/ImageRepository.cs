@@ -16,91 +16,89 @@ namespace HCrawler.Api.DB.Repositories
             _context = context;
         }
 
-        public IEnumerable<Core.Repositories.Models.Image> GetAll()
+        public IEnumerable<DetailedImage> GetAll()
         {
             return _context.Images
                 .Include(x => x.Profile)
                 .ThenInclude(x => x.Source)
-                .Select(x => new Core.Repositories.Models.Image(x.Id, x.Path,
-                    new Core.Repositories.Models.Profile(x.Profile.Name, x.Profile.Url,
-                        new Core.Repositories.Models.Source(x.Profile.Source.Name, x.Profile.Source.Url))));
+                .Select(x => new DetailedImage(x.Id, x.Path,
+                    new DetailedProfile(x.Profile.Name, x.Profile.Url,
+                        new DetailedSource(x.Profile.Source.Name, x.Profile.Source.Url))));
         }
 
-        public async Task CreateImageAsync(CreateImage image)
+        public Task<bool> ProfileExistsAsync(string profileName)
         {
-            var ext = image.Type == "image" ? "jpeg" : "mp4";
-            var path = $"{image.ProfileName}/{image.Id}.{ext}";
-            var query = _context.Images
-                .Where(x => x.Path == path);
-
-            var any = await query
-                .AnyAsync();
-
-            if (!any)
-            {
-                var profileId = await ProfileCreateIfNotExist(image);
-                _context.Images.Add(new Image
-                {
-                    Path = path,
-                    ProfileId = profileId,
-                    Url = image.PostUrl,
-                    CreatedOn = image.CreatedOn
-                });
-                await _context.SaveChangesAsync();
-            }
+            return _context.Profiles.AnyAsync(x => x.Name == profileName);
         }
 
-
-        private async Task<int> SourceCreateIfNotExist(CreateImage image)
+        public Task<bool> SourceExistsAsync(string sourceName)
         {
-            var query = _context.Sources
-                .Where(x => x.Name == image.SourceName);
+            return _context.Sources.AnyAsync(x => x.Name == sourceName);
+        }
 
-            var any = await query
-                .AnyAsync();
+        public Task<bool> ImageExistsAsync(string imagePath)
+        {
+            return _context.Images.AnyAsync(x => x.Path == imagePath);
+        }
 
-            if (!any)
+        public async Task<int> StoreProfileAsync(StoreProfile storeProfile)
+        {
+            var entry = _context.Profiles.Add(new Profile
             {
-                var entityEntry = _context.Sources.Add(new Source
-                {
-                    Name = image.SourceName,
-                    Url = image.SourceUrl
-                });
-                await _context.SaveChangesAsync();
-                return entityEntry.Entity.Id;
-            }
+                Name = storeProfile.Name, Url = storeProfile.Url, SourceId = storeProfile.SourceId
+            });
 
-            var sourceDb = await query.FirstOrDefaultAsync();
-            sourceDb.Url = image.SourceUrl;
             await _context.SaveChangesAsync();
-            return sourceDb.Id;
+
+            return entry.Entity.Id;
         }
 
-        private async Task<int> ProfileCreateIfNotExist(CreateImage image)
+        public async Task<int> StoreSourceAsync(StoreSource storeSource)
         {
-            var query = _context.Profiles
-                .Where(x => x.Name == image.ProfileName);
+            var entry = _context.Sources.Add(new Source {Name = storeSource.Name, Url = storeSource.Url});
 
-            var any = await query
-                .AnyAsync();
-
-            if (!any)
-            {
-                var sourceId = await SourceCreateIfNotExist(image);
-                var entityEntry = _context.Profiles.Add(new Profile
-                {
-                    Name = image.ProfileName,
-                    Url = image.ProfileUrl,
-                    SourceId = sourceId
-                });
-                await _context.SaveChangesAsync();
-                return entityEntry.Entity.Id;
-            }
-
-            var profileDb = await query.FirstOrDefaultAsync();
-            profileDb.Url = image.ProfileUrl;
             await _context.SaveChangesAsync();
-            return profileDb.Id;
+
+            return entry.Entity.Id;
+        }
+
+        public async Task<int> StoreImageAsync(StoreImage storeImage)
+        {
+            var entry = _context.Images.Add(new Image
+            {
+                Path = storeImage.Path,
+                ProfileId = storeImage.ProfileId,
+                Url = storeImage.Url,
+                CreatedOn = storeImage.CreatedOn
+            });
+
+            await _context.SaveChangesAsync();
+
+            return entry.Entity.Id;
+        }
+
+        public Task<int> GetProfileIdByNameAsync(string profileName)
+        {
+            return _context.Profiles
+                .Where(x => x.Name == profileName)
+                .Select(x => x.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<int> GetSourceIdByNameAsync(string sourceName)
+        {
+            return _context.Sources
+                .Where(x => x.Name == sourceName)
+                .Select(x => x.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        public Task<int> GetImageIdByPath(string path)
+        {
+            return _context.Images
+                .Where(x => x.Path == path)
+                .Select(x => x.Id)
+                .FirstOrDefaultAsync();
         }
     }
 }
