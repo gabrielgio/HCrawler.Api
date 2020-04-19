@@ -7,7 +7,10 @@ pipeline {
     stages {
         stage('Test') {
             agent {
-                docker "mcr.microsoft.com/dotnet/core/sdk:3.1"
+                docker {
+                    image "mcr.microsoft.com/dotnet/core/sdk:3.1"
+                    args = "-e NUGET_PACKAGES=/app/.dotnet"
+                }
             }
             steps {
                 sh "dotnet test"
