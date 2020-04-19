@@ -9,7 +9,7 @@ pipeline {
             agent {
                 docker {
                     image "mcr.microsoft.com/dotnet/core/sdk:3.1"
-                    args = "-e NUGET_PACKAGES=/app/.dotnet"
+                    args "-e NUGET_PACKAGES=/app/.dotnet"
                 }
             }
             steps {
