@@ -1,3 +1,9 @@
+test:
+  image: mcr.microsoft.com/dotnet/core/sdk:3.1
+  stage: test
+  script:
+    - dotnet test
+
 # This file is a template, and might need editing before it works on your project.
 docker-build-master:
   # Official docker image.
