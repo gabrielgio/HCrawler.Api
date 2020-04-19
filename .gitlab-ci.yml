@@ -36,5 +36,6 @@ test:
     - dotnet test  --logger:junit  
   artifacts:
     reports:
+      cobertura: /HCrawler.Test/coverage.cobertura.xml
       junit:
         - HCrawler.Test/TestResults/TestResults.xml
