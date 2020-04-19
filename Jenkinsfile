@@ -8,8 +8,8 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image "mcr.microsoft.com/dotnet/core/sdk:3.1"
-                    args "-e NUGET_PACKAGES=/app/.dotnet"
+                    image "registry.gitlab.com/gabrielgio/dotnet-jenkins"
+                    args "-e NUGET_PACKAGES=/home/jguest/.dotnet -e HOME=/home/jguest"
                 }
             }
             steps {
