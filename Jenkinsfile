@@ -9,7 +9,9 @@ pipeline {
             agent {
                 docker "mcr.microsoft.com/dotnet/core/sdk:3.1"
             }
-            sh "dotnet test"
+            steps {
+                sh "dotnet test"
+            }
         }
         stage('Build') {
             agent any
@@ -23,6 +25,11 @@ pipeline {
                 sh "docker push ${env.IMAGE_NAME}:0.0.${env.BUILD_NUMBER}"
 		        sh "docker push ${env.IMAGE_NAME}:latest"
 	        }
+        }
+    }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
