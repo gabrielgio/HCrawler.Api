@@ -37,4 +37,4 @@ test:
   artifacts:
     reports:
       junit:
-        - TestResults/TestResults.xml
+        - HCrawler.Test/TestResults/TestResults.xml
