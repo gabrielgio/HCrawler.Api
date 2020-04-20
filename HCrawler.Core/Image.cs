@@ -21,7 +21,7 @@ namespace HCrawler.Core
 
         public async Task CreateImageIfNotExistsAsync(CreateImage createImage)
         {
-            var profileId = await CreateProfileIfNotExists(createImage);
+            var profileId = await CreateProfileIfNotExistsAsync(createImage);
 
             var exists = await _imageRepository.ImageExistsAsync(createImage.ImagePath);
 
@@ -31,7 +31,7 @@ namespace HCrawler.Core
             }
         }
 
-        public async Task<int> CreateProfileIfNotExists(CreateImage createImage)
+        public async Task<int> CreateProfileIfNotExistsAsync(CreateImage createImage)
         {
             var sourceId = await CreateSourceIfNotExists(createImage);
 

@@ -8,7 +8,7 @@ namespace HCrawler.Test.Mock
 {
     public static class ImageRepositoryMock
     {
-        public static Mock<IImageRepository> MockImageRepository() => new Mock<IImageRepository>();
+        public static Mock<IImageRepository> MockImageRepository() => new Mock<IImageRepository>(MockBehavior.Strict);
 
         public static T GetAll<T>(this T source, IEnumerable<DetailedImage> result) where T : Mock<IImageRepository>
         {
