@@ -36,6 +36,6 @@ test:
     - dotnet test  --logger:junit /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura 
   artifacts:
     reports:
-      cobertura: /HCrawler.Test/coverage.cobertura.xml
+      cobertura: HCrawler.Test/coverage.cobertura.xml
       junit:
         - HCrawler.Test/TestResults/TestResults.xml
