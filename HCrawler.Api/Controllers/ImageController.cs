@@ -17,9 +17,13 @@ namespace HCrawler.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery]PageFilter filter)
         {
-            return Ok(_image.GetAll());
+            var page = _image
+                .GetAll()
+                .Paginate(filter);
+            
+            return Ok(page);
         }
 
         [HttpPost]

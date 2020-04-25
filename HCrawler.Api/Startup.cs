@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Image = HCrawler.Core.Image;
 
 namespace HCrawler.Api
 {
@@ -31,6 +32,7 @@ namespace HCrawler.Api
                 options.UseNpgsql(_configuration["ConnectionString"]));
 
             services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<Image>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
