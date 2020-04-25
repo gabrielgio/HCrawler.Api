@@ -1,7 +1,4 @@
-using System.Drawing;
-using Microsoft.AspNetCore.Identity;
-
-namespace HCrawler.Api.Controllers
+namespace HCrawler.Api.DB.Utils
 {
     public class PageFilter
     {

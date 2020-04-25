@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HCrawler.Api.DB.Utils;
 using HCrawler.Core.Repositories;
 using HCrawler.Core.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,13 @@ namespace HCrawler.Api.DB.Repositories
             _context = context;
         }
 
-        public IEnumerable<DetailedImage> GetAll()
+        public IEnumerable<DetailedImage> GetAll(PageFilter pageFilter)
         {
             return _context.Images
                 .Include(x => x.Profile)
                 .ThenInclude(x => x.Source)
+                .OrderByDescending(x => x.CreatedOn)
+                .Paginate(pageFilter)
                 .Select(x => new DetailedImage(x.Id, x.Path,
                     new DetailedProfile(x.Profile.Name, x.Profile.Url,
                         new DetailedSource(x.Profile.Source.Name, x.Profile.Source.Url))));

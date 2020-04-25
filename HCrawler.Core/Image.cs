@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HCrawler.Api.DB.Utils;
 using HCrawler.Core.Repositories;
 using HCrawler.Core.Repositories.Models;
 
@@ -14,9 +15,9 @@ namespace HCrawler.Core
             _imageRepository = imageRepository;
         }
 
-        public IEnumerable<DetailedImage> GetAll()
+        public IEnumerable<DetailedImage> GetAll(PageFilter pageFilter)
         {
-            return _imageRepository.GetAll();
+            return _imageRepository.GetAll(pageFilter);
         }
 
         public async Task CreateImageIfNotExistsAsync(CreateImage createImage)

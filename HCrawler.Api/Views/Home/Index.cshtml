@@ -1,0 +1,43 @@
+@model HCrawler.Api.Controllers.Page<HCrawler.Core.Repositories.Models.DetailedImage>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+</head>
+<body>
+<div class="container" style="max-width: 500px;">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <h1 class="title">Imger</h1>
+            </a>
+        </div>
+    </nav>
+    @foreach (var image in Model.Results)
+    {
+        <div style="padding-bottom: 5px;">
+            <figure class="image">
+                @if (image.Path.Contains("mp4"))
+                {
+                    <video muted autoplay loop>
+                        <source src="@image.Path" type="video/mp4">
+                    </video>
+                }
+                else
+                {
+                    <img src="@image.Path"/>
+                }
+            </figure>
+        </div>
+    }
+    <nav class="pagination is-right" role="navigation" aria-label="pagination">
+        <a class="pagination-previous" href="/?number=@Model.Previous">Previous</a>
+        <a class="pagination-next" href="/?number=@Model.Next">Next page</a>
+    </nav>
+</div>
+</body>
+</html>

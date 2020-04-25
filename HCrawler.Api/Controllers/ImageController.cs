@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using HCrawler.Api.DB.Utils;
 using HCrawler.Core;
 using HCrawler.Core.Repositories.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +18,10 @@ namespace HCrawler.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery]PageFilter filter)
+        public IActionResult Get([FromQuery] PageFilter filter)
         {
-            var page = _image
-                .GetAll()
-                .Paginate(filter);
-            
+            var page = _image.GetAll(filter);
+
             return Ok(page);
         }
 

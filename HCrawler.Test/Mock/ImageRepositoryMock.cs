@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using HCrawler.Api.DB.Utils;
 using HCrawler.Core.Repositories;
 using HCrawler.Core.Repositories.Models;
 using Moq;
@@ -10,10 +11,10 @@ namespace HCrawler.Test.Mock
     {
         public static Mock<IImageRepository> MockImageRepository() => new Mock<IImageRepository>(MockBehavior.Strict);
 
-        public static T GetAll<T>(this T source, IEnumerable<DetailedImage> result) where T : Mock<IImageRepository>
+        public static T GetAll<T>(this T source, PageFilter page, IEnumerable<DetailedImage> result) where T : Mock<IImageRepository>
         {
             source
-                .Setup(x => x.GetAll())
+                .Setup(x => x.GetAll(page))
                 .Returns(result);
 
             return source;

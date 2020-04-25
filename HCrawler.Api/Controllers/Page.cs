@@ -1,21 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 
 namespace HCrawler.Api.Controllers
 {
-    public struct Page<T>
+    public class Page<T>
     {
-        public Page(int count, IEnumerable<T> result, int pageCount)
+        public Page(IEnumerable<T> results, int previous, int next)
         {
-            Count = count;
-            Result = result;
-            PageCount = pageCount;
+            Results = results;
+            Previous = previous;
+            Next = next;
         }
 
-        public int Count { get; }
+        public int Next { get; set; }
 
-        public IEnumerable<T> Result { get; }
+        public int Previous { get; set; }
 
-        public int PageCount { get; }
+        public IEnumerable<T> Results { get; set; }
     }
 }
