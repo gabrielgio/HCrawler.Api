@@ -19,6 +19,7 @@ namespace HCrawler.DB.Repositories
 
         public Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
         {
+            pageFilter.Number = pageFilter.Size * pageFilter.Number;
             var sql = @"
             SELECT I.""Id"", I.""Path"", P.""Name"", P.""Url"", S.""Name"", S.""Url"" FROM ""Images"" I
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
