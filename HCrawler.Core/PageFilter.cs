@@ -4,7 +4,7 @@ namespace HCrawler.Api.DB.Utils
     {
         public PageFilter()
         {
-            Size = 10;
+            Size = 100;
             Number = 0;
         }
 

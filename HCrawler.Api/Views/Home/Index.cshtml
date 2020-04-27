@@ -13,7 +13,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <h1 class="title">Imger</h1>
+                <h1 class="title">Imager</h1>
             </a>
         </div>
     </nav>
@@ -35,7 +35,10 @@
         </div>
     }
     <nav class="pagination is-right" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" href="/?number=@Model.Previous">Previous</a>
+        @if (Model.Previous >= 0)
+        {
+            <a class="pagination-previous" href="/?number=@Model.Previous">Previous</a>
+        }
         <a class="pagination-next" href="/?number=@Model.Next">Next page</a>
     </nav>
 </div>

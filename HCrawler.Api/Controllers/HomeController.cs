@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HCrawler.Api.Controllers
 {
-    public class Home : Controller
+    public class HomeController : Controller
     {
         private readonly Image _image;
 
-        public Home(Image image)
+        public HomeController(Image image)
         {
             _image = image;
         }
@@ -21,7 +21,7 @@ namespace HCrawler.Api.Controllers
             var images = await _image.GetAll(pageFilter);
             foreach (var image in images)
             {
-                image.Path = $"instagran/{image.Path}";
+                image.Path = $"instagram/{image.Path}";
             }
 
             var page = new Page<DetailedImage>(images, pageFilter.Number - 1, pageFilter.Number + 1);
