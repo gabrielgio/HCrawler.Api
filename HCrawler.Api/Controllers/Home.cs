@@ -16,9 +16,9 @@ namespace HCrawler.Api.Controllers
             _image = image;
         }
 
-        public IActionResult Index([FromQuery] PageFilter pageFilter)
+        public async Task<IActionResult> Index([FromQuery] PageFilter pageFilter)
         {
-            var images = _image.GetAll(pageFilter).ToList();
+            var images = await _image.GetAll(pageFilter);
             foreach (var image in images)
             {
                 image.Path = $"instagran/{image.Path}";
