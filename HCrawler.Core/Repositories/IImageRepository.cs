@@ -7,7 +7,7 @@ namespace HCrawler.Core.Repositories
 {
     public interface IImageRepository
     {
-        IEnumerable<DetailedImage> GetAll(PageFilter pageFilter);
+        Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter);
         Task<bool> ProfileExistsAsync(string profileName);
         Task<bool> SourceExistsAsync(string sourceName);
         Task<bool> ImageExistsAsync(string imagePath);

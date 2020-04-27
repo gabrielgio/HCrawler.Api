@@ -1,16 +1,16 @@
 using System;
+using System.Data;
 using System.IO;
 using System.Reflection;
-using HCrawler.Api.DB;
-using HCrawler.Api.DB.Repositories;
 using HCrawler.Core.Repositories;
+using HCrawler.DB.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Npgsql;
 using Image = HCrawler.Core.Image;
 
 namespace HCrawler.Api
@@ -29,11 +29,15 @@ namespace HCrawler.Api
             services.AddControllers();
             services.AddControllersWithViews();
 
-            services.AddDbContext<ImageDbContext>(options =>
-                options.UseNpgsql(_configuration["ConnectionString"]));
-
-            services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<Image>();
+            services.AddScoped<IImageRepository, ImageRepository>();
+
+            services.AddScoped<IDbConnection>(delegate
+            {
+                var dbConnection = new NpgsqlConnection(_configuration["ConnectionString"]);
+                dbConnection.Open();
+                return dbConnection;
+            });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -43,25 +47,6 @@ namespace HCrawler.Api
                     {
                         Title = "Recipe API", Version = "v1", Description = "If you got here you know what it does"
                     });
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description =
-                        "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "Bearer"}
-                        },
-                        new string[] { }
-                    }
-                });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);

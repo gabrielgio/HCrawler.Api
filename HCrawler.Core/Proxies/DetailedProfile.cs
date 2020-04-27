@@ -2,6 +2,10 @@ namespace HCrawler.Core.Repositories.Models
 {
     public class DetailedProfile
     {
+        public DetailedProfile()
+        {
+            
+        }
         public DetailedProfile(string name, string url, DetailedSource detailedSource)
         {
             Name = name;

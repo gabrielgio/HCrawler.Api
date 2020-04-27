@@ -15,7 +15,7 @@ namespace HCrawler.Core
             _imageRepository = imageRepository;
         }
 
-        public IEnumerable<DetailedImage> GetAll(PageFilter pageFilter)
+        public Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
         {
             return _imageRepository.GetAll(pageFilter);
         }

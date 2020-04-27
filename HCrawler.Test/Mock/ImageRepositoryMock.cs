@@ -15,7 +15,7 @@ namespace HCrawler.Test.Mock
         {
             source
                 .Setup(x => x.GetAll(page))
-                .Returns(result);
+                .ReturnsAsync(result);
 
             return source;
         }
