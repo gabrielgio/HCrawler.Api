@@ -12,12 +12,9 @@ namespace HCrawler.DB
         {
             var serviceProvider = CreateServices();
 
-            // Put the database update into a scope to ensure
-            // that all resources will be disposed.
-            using (var scope = serviceProvider.CreateScope())
-            {
-                UpdateDatabase(scope.ServiceProvider);
-            }
+            using var scope = serviceProvider.CreateScope();
+            
+            UpdateDatabase(scope.ServiceProvider);
         }
 
         /// <summary>
@@ -30,7 +27,7 @@ namespace HCrawler.DB
                 .AddScoped<IConfiguration>(x =>
                 {
                     var env = new EnvironmentVariablesConfigurationProvider();
-                    return new ConfigurationRoot(new []{env});
+                    return new ConfigurationRoot(new[] {env});
                 })
                 .ConfigureRunner(rb => rb
                     .AddPostgres()
@@ -44,16 +41,11 @@ namespace HCrawler.DB
                 .BuildServiceProvider(false);
         }
 
-        /// <summary>
-        /// Update the database
-        /// </summary>
         private static void UpdateDatabase(IServiceProvider serviceProvider)
         {
-            // Instantiate the runner
-            var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
-
-            // Execute the migrations
-            runner.MigrateUp();
+            serviceProvider
+                .GetRequiredService<IMigrationRunner>()
+                .MigrateUp();
         }
     }
 }
