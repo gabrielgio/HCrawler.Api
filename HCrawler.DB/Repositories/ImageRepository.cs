@@ -28,11 +28,7 @@ namespace HCrawler.DB.Repositories
             LIMIT @size
             OFFSET @number
             ";
-            return _connection.QueryAsync<DetailedImage>(sql, new
-            {
-                number = number,
-                size = pageFilter.Size,
-            });
+            return _connection.QueryAsync<DetailedImage>(sql, new {number = number, size = pageFilter.Size,});
         }
 
         public Task<bool> ProfileExistsAsync(string profileName)
@@ -69,13 +65,8 @@ namespace HCrawler.DB.Repositories
             VALUES (@name, @sourceId, @url)
             RETURNING ""Id""
             ";
-            return _connection.QueryFirstAsync<int>(sql, new
-            {
-                name = storeProfile.Name,
-                sourceId = storeProfile.SourceId,
-                url = storeProfile.Url
-                
-            });
+            return _connection.QueryFirstAsync<int>(sql,
+                new {name = storeProfile.Name, sourceId = storeProfile.SourceId, url = storeProfile.Url});
         }
 
         public Task<int> StoreSourceAsync(StoreSource storeSource)
@@ -85,30 +76,24 @@ namespace HCrawler.DB.Repositories
             VALUES (@name, @url)
             RETURNING ""Id""
             ";
-            return _connection.QueryFirstAsync<int>(sql, new
-            {
-               name = storeSource.Name,
-               url = storeSource.Url
-            });
+            return _connection.QueryFirstAsync<int>(sql, new {name = storeSource.Name, url = storeSource.Url});
         }
 
-        public async Task<int> StoreImageAsync(StoreImage storeImage)
+        public Task<int> StoreImageAsync(StoreImage storeImage)
         {
             var sql = @"
             INSERT INTO  ""Images"" (""ProfileId"", ""Path"", ""Url"", ""CreatedOn"")
             VALUES (@profileId, @path, @url, @createdOn)
             RETURNING ""Id""
             ";
-             var id = await _connection.QueryFirstAsync<int>(sql, new
-            {
-               profileId = storeImage.ProfileId,
-               path = storeImage.Path,
-               url = storeImage.Url,
-               createdOn = storeImage.CreatedOn
-               
-            });
-
-             return id;
+            return _connection.QueryFirstAsync<int>(sql,
+                new
+                {
+                    profileId = storeImage.ProfileId,
+                    path = storeImage.Path,
+                    url = storeImage.Url,
+                    createdOn = storeImage.CreatedOn
+                });
         }
 
         public Task<int> GetProfileIdByNameAsync(string profileName)
@@ -128,7 +113,7 @@ namespace HCrawler.DB.Repositories
             WHERE S.""Name"" = @sourceName
             LIMIT 1
             ";
-            return  _connection.QuerySingleAsync<int>(sql, new {sourceName});
+            return _connection.QuerySingleAsync<int>(sql, new {sourceName});
         }
     }
 }

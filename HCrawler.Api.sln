@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Test", "HCrawler.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.DB", "HCrawler.DB\HCrawler.DB.csproj", "{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.IntegrationTest", "HCrawler.IntegrationTest\HCrawler.IntegrationTest.csproj", "{6943E579-0672-4D40-8F49-28DCE0C7FD31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

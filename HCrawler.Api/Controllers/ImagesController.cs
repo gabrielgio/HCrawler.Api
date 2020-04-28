@@ -8,19 +8,19 @@ namespace HCrawler.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ImageController : ControllerBase
+    public class ImagesController : ControllerBase
     {
         private readonly Image _image;
 
-        public ImageController(Image image)
+        public ImagesController(Image image)
         {
             _image = image;
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery] PageFilter filter)
+        public async Task<IActionResult> Get([FromQuery] PageFilter filter)
         {
-            var page = _image.GetAll(filter);
+            var page = await _image.GetAll(filter);
 
             return Ok(page);
         }

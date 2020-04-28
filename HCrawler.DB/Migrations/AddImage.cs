@@ -34,6 +34,7 @@ namespace HCrawler.DB.Migrations
                     .WithColumn("Id").AsInt64().PrimaryKey().Identity()
                     .WithColumn("Path").AsString().Unique()
                     .WithColumn("Url").AsString().Unique()
+                    .WithColumn("CreatedOn").AsDateTime()
                     .WithColumn("ProfileId").AsInt64();
 
                 Create.ForeignKey()
