@@ -19,6 +19,7 @@ namespace HCrawler.DB.Repositories
 
         public Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
         {
+            var number = pageFilter.Size * pageFilter.Number;
             var sql = @"
             SELECT I.""Id"", I.""Path"", P.""Name"", P.""Url"", S.""Name"", S.""Url"" FROM ""Images"" I
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
@@ -27,7 +28,11 @@ namespace HCrawler.DB.Repositories
             LIMIT @size
             OFFSET @number
             ";
-            return _connection.QueryAsync<DetailedImage>(sql, pageFilter);
+            return _connection.QueryAsync<DetailedImage>(sql, new
+            {
+                number = number,
+                size = pageFilter.Size,
+            });
         }
 
         public Task<bool> ProfileExistsAsync(string profileName)
