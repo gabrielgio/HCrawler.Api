@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using HCrawler.Api.DB.Utils;
 using HCrawler.Core.Repositories;
 using HCrawler.Core.Repositories.Models;
+using HCrawler.DB.Repositories.DbModel;
 
 namespace HCrawler.DB.Repositories
 {
@@ -17,18 +19,38 @@ namespace HCrawler.DB.Repositories
             _connection = connection;
         }
 
-        public Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
+        private string PushFilter(string name)
+        {
+            if (name is object)
+            {
+                return $@"WHERE P.""Name"" = '{name}'";
+            }
+
+            return string.Empty;
+        }
+
+        public async Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
         {
             var number = pageFilter.Size * pageFilter.Number;
-            var sql = @"
-            SELECT I.""Id"", I.""Path"", P.""Name"", P.""Url"", S.""Name"", S.""Url"" FROM ""Images"" I
+            var sql = $@"
+            SELECT I.""Id"" ImageId,
+                   I.""Path"" ImagePath,
+                   P.""Name"" ProfileName,
+                   P.""Url"" ProfileUrl,
+                   S.""Name"" SourceName,
+                   S.""Url"" SourceUrl 
+            FROM ""Images"" I
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
             INNER JOIN ""Sources"" S on P.""SourceId"" = S.""Id""
+            {PushFilter(pageFilter.Name)}
             ORDER BY I.""CreatedOn"" DESC
             LIMIT @size
             OFFSET @number
             ";
-            return _connection.QueryAsync<DetailedImage>(sql, new {number = number, size = pageFilter.Size,});
+
+            var dbImages = await _connection.QueryAsync<DbDetailedImage>(sql, new {number, size = pageFilter.Size});
+
+            return dbImages.Select(x => x.ToDetailedImage());
         }
 
         public Task<bool> ProfileExistsAsync(string profileName)

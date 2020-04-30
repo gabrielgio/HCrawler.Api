@@ -1,12 +1,15 @@
 using System;
 using System.Data;
+using System.IO;
 using System.Net.Http;
 using HCrawler.Api;
+using HCrawler.Api.Controllers;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace HCrawler.IntegrationTest
 {
@@ -20,6 +23,7 @@ namespace HCrawler.IntegrationTest
 
         public WebFixture()
         {
+            
             var builder = Host.CreateDefaultBuilder()
                 .ConfigureWebHost(webBuilder =>
                 {
@@ -27,6 +31,7 @@ namespace HCrawler.IntegrationTest
                     webBuilder.UseTestServer();
                     webBuilder.UseStartup<TestStartup>();
                 });
+            
 
             var host = builder.Start();
             Client = host.GetTestClient();

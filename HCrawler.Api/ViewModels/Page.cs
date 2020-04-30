@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace HCrawler.Api.Controllers
+namespace HCrawler.Api.ViewModels
 {
     public class Page<T>
     {

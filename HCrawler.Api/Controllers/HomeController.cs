@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using HCrawler.Api.DB.Utils;
+using HCrawler.Api.ViewModels;
 using HCrawler.Core;
 using HCrawler.Core.Repositories.Models;
 using Microsoft.AspNetCore.Mvc;

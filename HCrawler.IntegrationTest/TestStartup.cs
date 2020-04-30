@@ -37,7 +37,8 @@ namespace HCrawler.IntegrationTest
                 return dbConnection;
             });
 
-            services.AddMvc().AddApplicationPart(Assembly.Load(new AssemblyName("HCrawler.Api")));
+            services.AddMvc()
+                .AddApplicationPart(Assembly.Load(new AssemblyName("HCrawler.Api")));
 
         }
 

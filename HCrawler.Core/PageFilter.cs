@@ -11,5 +11,7 @@ namespace HCrawler.Api.DB.Utils
         public int Size { get; set; }
 
         public int Number { get; set; }
+
+        public string Name { get; set; }
     }
 }

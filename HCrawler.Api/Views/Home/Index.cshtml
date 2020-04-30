@@ -1,4 +1,4 @@
-@model HCrawler.Api.Controllers.Page<HCrawler.Core.Repositories.Models.DetailedImage>
+@model HCrawler.Api.ViewModels.Page<HCrawler.Core.Repositories.Models.DetailedImage>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
     </nav>
     @foreach (var image in Model.Results)
     {
-        <div style="padding-bottom: 5px;">
+        <div style="padding-bottom: 5px; padding-top: 5px">
             <figure class="image">
                 @if (image.Path.Contains("mp4"))
                 {
@@ -33,6 +33,13 @@
                 }
             </figure>
         </div>
+        <a href="/?name=@image.Profile.Name">
+            <div style="padding-left: 10px">
+                <div class="tag">
+                    @image.Profile.Name
+                </div>
+            </div>
+        </a>
     }
     <nav class="pagination is-right" role="navigation" aria-label="pagination">
         @if (Model.Previous >= 0)
