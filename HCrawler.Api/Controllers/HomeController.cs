@@ -19,7 +19,8 @@ namespace HCrawler.Api.Controllers
 
         public async Task<IActionResult> Index([FromQuery] PageFilter pageFilter)
         {
-            var images = await _image.GetAll(pageFilter);
+            var images = (await _image.GetAll(pageFilter)).ToList();
+            
             foreach (var image in images)
             {
                 image.Path = $"instagram/{image.Path}";
