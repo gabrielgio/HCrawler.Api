@@ -44,9 +44,9 @@
     <nav class="pagination is-right" role="navigation" aria-label="pagination">
         @if (Model.Previous >= 0)
         {
-            <a class="pagination-previous" href="/?number=@Model.Previous">Previous</a>
+            <a class="pagination-previous" href="/?number=@Model.Previous@(Model.Name is object ? $"&name={Model.Name}" : "")">Previous</a>
         }
-        <a class="pagination-next" href="/?number=@Model.Next">Next page</a>
+        <a class="pagination-next" href="/?number=@Model.Next@(Model.Name is object ? $"&name={Model.Name}" : "")">Next page</a>
     </nav>
 </div>
 </body>

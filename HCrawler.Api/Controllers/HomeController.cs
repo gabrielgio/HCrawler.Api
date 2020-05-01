@@ -20,13 +20,13 @@ namespace HCrawler.Api.Controllers
         public async Task<IActionResult> Index([FromQuery] PageFilter pageFilter)
         {
             var images = (await _image.GetAll(pageFilter)).ToList();
-            
+
             foreach (var image in images)
             {
                 image.Path = $"instagram/{image.Path}";
             }
 
-            var page = new Page<DetailedImage>(images, pageFilter.Number - 1, pageFilter.Number + 1);
+            var page = new Page<DetailedImage>(images, pageFilter.Number - 1, pageFilter.Number + 1, pageFilter.Name);
             return View(page);
         }
     }
