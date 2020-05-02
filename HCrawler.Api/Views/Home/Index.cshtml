@@ -8,25 +8,29 @@
     <title>Imager</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 </head>
-<body>
+<body class="has-navbar-fixed-top">
 <div class="container" style="max-width: 500px;">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-transparent is-fixed-top">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <h1 class="title">Imager</h1>
+            <a class="navbar-item has-text-weight-bold is-uppercase  is-family-monospace" href="/">
+                Imager
             </a>
-            @if (Model.Name is object)
+            @if (@Model.Name is object)
             {
-                <a href="/?name=@Model.Name">
-                    <div style="padding-top: 18px">
-                        <div class="tag">
-                            @Model.Name
-                        </div>
-                    </div>
+                <a class="navbar-item is-uppercase is-family-monospace" href="/?name=@Model.Name">
+                    @Model.Name
                 </a>
             }
+            @if (Model.Previous is object)
+            {
+                <a class="navbar-item is-family-monospace" href="javascript:history.back();">
+                    &lt
+                </a>
+            }
+            <a class="navbar-item is-family-monospace" href="/?checkpoint=@Model.Next@(Model.Name is object ? $"&name={Model.Name}" : "")">
+                >
+            </a>
         </div>
-
     </nav>
     @foreach (var image in Model.Results)
     {
@@ -48,20 +52,13 @@
         {
             <a href="/?name=@image.Profile.Name">
                 <div style="padding-left: 10px">
-                    <div class="tag">
+                    <div class="tag is-family-monospace">
                         @image.Profile.Name
                     </div>
                 </div>
             </a>
         }
     }
-    <nav class="pagination is-right" role="navigation" style="padding-top: 5px" aria-label="pagination">
-        @if (Model.Previous is object)
-        {
-            <a class="pagination-previous" href="/?checkpoint=@Model.Previous@(Model.Name is object ? $"&name={Model.Name}" : "")">Previous</a>
-        }
-        <a class="pagination-next" href="/?checkpoint=@Model.Next@(Model.Name is object ? $"&name={Model.Name}" : "")">Next page</a>
-    </nav>
 </div>
 </body>
 </html>
