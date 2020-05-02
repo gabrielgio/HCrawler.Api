@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using HCrawler.Api.DB.Utils;
+using HCrawler.Core;
 using HCrawler.Core.Repositories;
 using HCrawler.Core.Repositories.Models;
 using HCrawler.DB.Repositories.DbModel;
@@ -23,7 +24,7 @@ namespace HCrawler.DB.Repositories
         {
             if (name is object)
             {
-                return $@"WHERE P.""Name"" = '{name}'";
+                return $@"AND P.""Name"" = '{name}'";
             }
 
             return string.Empty;
@@ -31,24 +32,26 @@ namespace HCrawler.DB.Repositories
 
         public async Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
         {
-            var number = pageFilter.Size * pageFilter.Number;
+            var checkpoint = pageFilter.Checkpoint ?? DateTime.MaxValue;
+
             var sql = $@"
             SELECT I.""Id"" ImageId,
                    I.""Path"" ImagePath,
                    P.""Name"" ProfileName,
                    P.""Url"" ProfileUrl,
                    S.""Name"" SourceName,
-                   S.""Url"" SourceUrl 
+                   S.""Url"" SourceUrl,
+                   I.""CreatedOn"" ImageCreatedOn
             FROM ""Images"" I
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
             INNER JOIN ""Sources"" S on P.""SourceId"" = S.""Id""
+            WHERE I.""CreatedOn"" < @checkpoint
             {PushFilter(pageFilter.Name)}
             ORDER BY I.""CreatedOn"" DESC
             LIMIT @size
-            OFFSET @number
             ";
 
-            var dbImages = await _connection.QueryAsync<DbDetailedImage>(sql, new {number, size = pageFilter.Size});
+            var dbImages = await _connection.QueryAsync<DbDetailedImage>(sql, new {checkpoint, size = pageFilter.Size});
 
             return dbImages.Select(x => x.ToDetailedImage());
         }

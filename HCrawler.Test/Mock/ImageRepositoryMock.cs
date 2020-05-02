@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using HCrawler.Api.DB.Utils;
+using HCrawler.Core;
 using HCrawler.Core.Repositories;
 using HCrawler.Core.Repositories.Models;
 using Moq;

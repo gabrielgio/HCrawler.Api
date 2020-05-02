@@ -1,3 +1,4 @@
+using System;
 using HCrawler.Core.Repositories.Models;
 
 namespace HCrawler.DB.Repositories.DbModel
@@ -16,12 +17,16 @@ namespace HCrawler.DB.Repositories.DbModel
 
         public string SourceUrl { get; set; }
 
+
+        public DateTime ImageCreatedOn { get; set; }
+
         public DetailedImage ToDetailedImage()
         {
             return new DetailedImage
             {
                 Id = ImageId,
                 Path = ImagePath,
+                CreatedOn = ImageCreatedOn,
                 Profile = new DetailedProfile
                 {
                     Name = ProfileName,

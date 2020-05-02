@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace HCrawler.Api.ViewModels
 {
     public class Page<T>
     {
-        public Page(IEnumerable<T> results, int previous, int next, string name)
+        public Page(IEnumerable<T> results, DateTime? previous, DateTime? next, string name)
         {
             Results = results;
             Previous = previous;
@@ -12,9 +13,9 @@ namespace HCrawler.Api.ViewModels
             Name = name;
         }
 
-        public int Next { get; set; }
+        public DateTime? Next { get; set; }
 
-        public int Previous { get; set; }
+        public DateTime? Previous { get; set; }
 
         public string Name { get; set; }
 

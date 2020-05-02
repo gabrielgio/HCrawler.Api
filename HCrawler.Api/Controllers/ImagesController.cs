@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using HCrawler.Api.DB.Utils;
 using HCrawler.Core;
 using HCrawler.Core.Repositories.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +19,7 @@ namespace HCrawler.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] PageFilter filter)
         {
-            var page = await _image.GetAll(filter);
+            var page = await _image.GetAllAsync(filter);
 
             return Ok(page);
         }

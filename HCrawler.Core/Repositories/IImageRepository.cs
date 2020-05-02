@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HCrawler.Api.DB.Utils;
 using HCrawler.Core.Repositories.Models;
 
 namespace HCrawler.Core.Repositories

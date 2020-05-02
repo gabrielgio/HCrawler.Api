@@ -24,29 +24,32 @@
                 @if (image.Path.Contains("mp4"))
                 {
                     <video muted autoplay loop>
-                        <source src="@image.Path" type="video/mp4">
+                        <source src="@image.Profile.DetailedSource.Name/@image.Path" type="video/mp4">
                     </video>
                 }
                 else
                 {
-                    <img src="@image.Path"/>
+                    <img src="@image.Profile.DetailedSource.Name/@image.Path"/>
                 }
             </figure>
         </div>
-        <a href="/?name=@image.Profile.Name">
-            <div style="padding-left: 10px">
-                <div class="tag">
-                    @image.Profile.Name
+        @if (Model.Name == null)
+        {
+            <a href="/?name=@image.Profile.Name">
+                <div style="padding-left: 10px">
+                    <div class="tag">
+                        @image.Profile.Name
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        }
     }
     <nav class="pagination is-right" role="navigation" aria-label="pagination">
-        @if (Model.Previous >= 0)
+        @if (Model.Previous is object)
         {
-            <a class="pagination-previous" href="/?number=@Model.Previous@(Model.Name is object ? $"&name={Model.Name}" : "")">Previous</a>
+            <a class="pagination-previous" href="/?checkpoint=@Model.Previous@(Model.Name is object ? $"&name={Model.Name}" : "")">Previous</a>
         }
-        <a class="pagination-next" href="/?number=@Model.Next@(Model.Name is object ? $"&name={Model.Name}" : "")">Next page</a>
+        <a class="pagination-next" href="/?checkpoint=@Model.Next@(Model.Name is object ? $"&name={Model.Name}" : "")">Next page</a>
     </nav>
 </div>
 </body>
