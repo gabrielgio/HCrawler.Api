@@ -34,30 +34,28 @@
     </nav>
     @foreach (var image in Model.Results)
     {
-        <div style="padding-bottom: 5px; padding-top: 5px">
-            <figure class="image">
-                @if (image.Path.Contains("mp4"))
+        <a href="/?name=@image.Profile.Name">
+            <div style="padding-bottom: 10px; padding-top: 10px">
+                <figure class="image">
+                    @if (image.Path.Contains("mp4"))
+                    {
+                        <video muted autoplay loop>
+                            <source src="@image.Profile.DetailedSource.Name/@image.Path" type="video/mp4">
+                        </video>
+                    }
+                    else
+                    {
+                        <img src="@image.Profile.DetailedSource.Name/@image.Path"/>
+                    }
+                </figure>
+                @if (Model.Name == null)
                 {
-                    <video muted autoplay loop>
-                        <source src="@image.Profile.DetailedSource.Name/@image.Path" type="video/mp4">
-                    </video>
-                }
-                else
-                {
-                    <img src="@image.Profile.DetailedSource.Name/@image.Path"/>
-                }
-            </figure>
-        </div>
-        @if (Model.Name == null)
-        {
-            <a href="/?name=@image.Profile.Name">
-                <div style="padding-left: 10px">
-                    <div class="tag is-family-monospace">
+                    <span class="is-family-monospace is-size-7 has-text-black">
                         @image.Profile.Name
-                    </div>
-                </div>
-            </a>
-        }
+                    </span>
+                }
+            </div>
+        </a>
     }
 </div>
 </body>
