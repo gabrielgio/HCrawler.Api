@@ -15,7 +15,18 @@
             <a class="navbar-item" href="/">
                 <h1 class="title">Imager</h1>
             </a>
+            @if (Model.Name is object)
+            {
+                <a href="/?name=@Model.Name">
+                    <div style="padding-top: 18px">
+                        <div class="tag">
+                            @Model.Name
+                        </div>
+                    </div>
+                </a>
+            }
         </div>
+
     </nav>
     @foreach (var image in Model.Results)
     {
@@ -44,7 +55,7 @@
             </a>
         }
     }
-    <nav class="pagination is-right" role="navigation" aria-label="pagination">
+    <nav class="pagination is-right" role="navigation" style="padding-top: 5px" aria-label="pagination">
         @if (Model.Previous is object)
         {
             <a class="pagination-previous" href="/?checkpoint=@Model.Previous@(Model.Name is object ? $"&name={Model.Name}" : "")">Previous</a>
