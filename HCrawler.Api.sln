@@ -4,11 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Api", "HCrawler.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Core", "HCrawler.Core\HCrawler.Core.csproj", "{30EF0216-9E16-45F1-A3A9-6F77EAD0DF46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Test", "HCrawler.Test\HCrawler.Test.csproj", "{03B73913-A35C-447A-A50C-568EC25B9CE1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.DB", "HCrawler.DB\HCrawler.DB.csproj", "{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.IntegrationTest", "HCrawler.IntegrationTest\HCrawler.IntegrationTest.csproj", "{6943E579-0672-4D40-8F49-28DCE0C7FD31}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hcrawler.Test", "Hcrawler.Test\Hcrawler.Test.fsproj", "{313F9D16-AFA5-4F81-9B31-39AD884E6CA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,6 @@ Global
 		{30EF0216-9E16-45F1-A3A9-6F77EAD0DF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30EF0216-9E16-45F1-A3A9-6F77EAD0DF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30EF0216-9E16-45F1-A3A9-6F77EAD0DF46}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03B73913-A35C-447A-A50C-568EC25B9CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03B73913-A35C-447A-A50C-568EC25B9CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03B73913-A35C-447A-A50C-568EC25B9CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03B73913-A35C-447A-A50C-568EC25B9CE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ECF2304-4966-42D6-BCF6-7E846D1F08FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +32,9 @@ Global
 		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6943E579-0672-4D40-8F49-28DCE0C7FD31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313F9D16-AFA5-4F81-9B31-39AD884E6CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313F9D16-AFA5-4F81-9B31-39AD884E6CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313F9D16-AFA5-4F81-9B31-39AD884E6CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313F9D16-AFA5-4F81-9B31-39AD884E6CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
