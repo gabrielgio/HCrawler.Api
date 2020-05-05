@@ -1,4 +1,4 @@
-module Hcrawler.TestF.Mock
+module HCrawler.Test.Mock
 
 open System.Collections.Generic
 open HCrawler.Core.Repositories

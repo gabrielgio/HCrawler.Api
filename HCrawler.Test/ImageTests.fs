@@ -1,11 +1,11 @@
-module Tests
+module HCrawler.Test.ImageTests
 
 open System
 open HCrawler.Core
 open HCrawler.Core.Repositories
 open HCrawler.Core.Repositories.Models
 open Xunit
-open Hcrawler.TestF.Mock
+open HCrawler.Test.Mock
 open FsUnit
 open Xunit
 
