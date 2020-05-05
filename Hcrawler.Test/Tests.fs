@@ -21,7 +21,7 @@ let ``Create Source If Exist`` sourceName sourceId =
         |> mockGetSourceIdByNameAsync sourceName sourceId
         |> spawn
 
-    let image = Image(mock.Object)
+    let image = Image(imageRepo)
 
     let newSourceId =
         image.CreateSourceIfNotExists(CreateImage(SourceName = sourceName))
@@ -43,7 +43,7 @@ let ``Create Source If Not Exists`` sourceName sourceId sourceUrl =
         |> mockStoreSourceAsync storeSource sourceId
         |> spawn
     
-    let image = Image(mock.Object)
+    let image = Image(imageRepo)
     
     let newSourceId =
         image.CreateSourceIfNotExists(CreateImage(SourceName = sourceName, SourceUrl= sourceUrl))
