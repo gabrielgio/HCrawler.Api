@@ -66,7 +66,7 @@ let mockStoreSourceAsync (storeSource: StoreSource) (result: int) (source: Mock<
     source
 
 
-let mockImageSourceAsync (storeImage: StoreImage) (result: int) (source: Mock<IImageRepository>) =
+let mockStoreImageAsync (storeImage: StoreImage) (result: int) (source: Mock<IImageRepository>) =
     source
         .Setup(fun x -> x.StoreImageAsync(It.Is(fun (y: StoreImage) ->
             y.Path = storeImage.Path &&

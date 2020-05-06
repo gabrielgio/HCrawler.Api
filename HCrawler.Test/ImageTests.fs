@@ -83,7 +83,59 @@ let ``Create Profile If Not Exists`` sourceName sourceId url profileName profile
 
     newProfileId |> should equal profileId
     mock.VerifyAll()
+    
 
+[<Theory>]
+[<InlineData("source name", 1, "http://localhost/", "profile name", 2)>]
+let ``Create Profile If Exists`` sourceName sourceId url profileName profileId =
+    let mock = mockImage
+
+    let storeProfile =
+        { SourceId = sourceId
+          Name = profileName
+          Url = url }
+
+    let imageRepo =
+        mock
+        |> mockProfileExistsAsync profileName true
+        |> mockGetProfileIdByNameAsync profileName profileId
+        |> spawn
+
+    let image = Image(imageRepo)
+
+    let newProfileId =
+        CreateImage(SourceName = sourceName, ProfileName = profileName, ProfileUrl = url)
+        |> image.CreateProfileIfNotExistsAsync
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
+
+    newProfileId |> should equal profileId
+    mock.VerifyAll()
+
+
+[<Theory>]
+[<InlineData("/home/", "demo", 2, "profile Name", 3, "http://localhost/")>]
+let ``Create Image If Not Exists`` path sourceName sourceId profileName profileId url =
+    let mock = mockImage
+    let dateTime = DateTime.Now
+
+    let imageRepo =
+        mock
+        |> mockProfileExistsAsync profileName true
+        |> mockGetProfileIdByNameAsync profileName profileId
+        |> mockImageExistsAsync path false
+        |> mockStoreImageAsync {ProfileId=profileId; Path=path; Url=url; CreatedOn=dateTime} 0
+        |> spawn
+
+    let image = Image(imageRepo)
+
+    CreateImage(ImagePath = path, CreatedOn = dateTime, SourceName = sourceName, ProfileName = profileName, ImageUrl = url)
+    |> image.CreateImageIfNotExistsAsync
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+    |> ignore
+
+    mock.VerifyAll()
 
 [<Theory>]
 [<InlineData("/home/", "demo", 2, "profile Name", 3, "http://localhost/")>]
@@ -93,10 +145,7 @@ let ``Create Image If Exists`` path sourceName sourceId profileName profileId ur
 
     let imageRepo =
         mock
-        |> mockProfileExistsAsync profileName true
-        |> mockGetProfileIdByNameAsync profileName profileId
-        |> mockImageExistsAsync path false
-        |> mockImageSourceAsync {ProfileId=profileId; Path=path; Url=url; CreatedOn=dateTime} 0
+        |> mockImageExistsAsync path true
         |> spawn
 
     let image = Image(imageRepo)
