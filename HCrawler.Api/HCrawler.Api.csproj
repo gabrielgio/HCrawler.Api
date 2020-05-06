@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HCrawler.Core\HCrawler.Core.csproj" />
       <ProjectReference Include="..\HCrawler.DB\HCrawler.DB.csproj" />
     </ItemGroup>
 

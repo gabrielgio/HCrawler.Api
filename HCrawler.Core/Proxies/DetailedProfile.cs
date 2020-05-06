@@ -1,4 +1,4 @@
-namespace HCrawler.Core.Repositories.Models
+namespace HCrawler.Core.Proxies
 {
     public class DetailedProfile
     {

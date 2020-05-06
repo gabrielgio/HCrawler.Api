@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Reflection;
-using HCrawler.Core.Repositories;
+using HCrawler.CoreF;
 using HCrawler.DB.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Npgsql;
-using Image = HCrawler.Core.Image;
 
 namespace HCrawler.Api
 {
@@ -29,7 +28,7 @@ namespace HCrawler.Api
             services.AddControllers();
             services.AddControllersWithViews();
 
-            services.AddScoped<Image>();
+            services.AddScoped<Image.Image>();
             services.AddScoped<IImageRepository, ImageRepository>();
 
             services.AddScoped<IDbConnection>(t =>

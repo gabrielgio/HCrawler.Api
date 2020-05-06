@@ -1,8 +1,9 @@
 module HCrawler.Test.Mock
 
 open System.Collections.Generic
-open HCrawler.Core.Repositories
-open HCrawler.Core.Repositories.Models
+open HCrawler.CoreF
+open HCrawler.CoreF.Payloads
+open HCrawler.CoreF.Proxies
 open Moq
 
 
@@ -14,7 +15,7 @@ let spawn (source:Mock<IImageRepository>) =
 
 let mockGetAllAsync pageFilter (result:IEnumerable<DetailedImage>) (source:Mock<IImageRepository>) =
    source
-       .Setup(fun x -> x.GetAll(pageFilter))
+       .Setup(fun x -> x.GetAllAsync(pageFilter))
        .ReturnsAsync(result)
    |> ignore
    source
@@ -63,6 +64,19 @@ let mockStoreSourceAsync (storeSource: StoreSource) (result: int) (source: Mock<
         .ReturnsAsync result
     |> ignore
     source
+
+
+let mockImageSourceAsync (storeImage: StoreImage) (result: int) (source: Mock<IImageRepository>) =
+    source
+        .Setup(fun x -> x.StoreImageAsync(It.Is(fun (y: StoreImage) ->
+            y.Path = storeImage.Path &&
+            y.ProfileId = storeImage.ProfileId &&
+            y.CreatedOn = storeImage.CreatedOn &&
+            y.Url = storeImage.Url)))
+        .ReturnsAsync result
+    |> ignore
+    source
+    
     
 let mockGetProfileIdByNameAsync profileName (result: int) (source: Mock<IImageRepository>) =
     source

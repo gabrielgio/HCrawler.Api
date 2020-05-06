@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HCrawler.Core;
-using HCrawler.Core.Repositories.Models;
+using HCrawler.CoreF;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HCrawler.Api.Controllers
@@ -9,15 +8,15 @@ namespace HCrawler.Api.Controllers
     [Route("[controller]")]
     public class ImagesController : ControllerBase
     {
-        private readonly Image _image;
+        private readonly Image.Image _image;
 
-        public ImagesController(Image image)
+        public ImagesController(Image.Image image)
         {
             _image = image;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] PageFilter filter)
+        public async Task<IActionResult> Get([FromQuery] Payloads.PageFilter filter)
         {
             var page = await _image.GetAllAsync(filter);
 
@@ -25,7 +24,7 @@ namespace HCrawler.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateImage createImage)
+        public async Task<IActionResult> Post([FromBody] Payloads.CreateImage createImage)
         {
             await _image.CreateImageIfNotExistsAsync(createImage);
             return Ok();

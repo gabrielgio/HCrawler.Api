@@ -1,5 +1,5 @@
 using System;
-using HCrawler.Core.Repositories.Models;
+using HCrawler.CoreF;
 
 namespace HCrawler.DB.Repositories.DbModel
 {
@@ -20,24 +20,11 @@ namespace HCrawler.DB.Repositories.DbModel
 
         public DateTime ImageCreatedOn { get; set; }
 
-        public DetailedImage ToDetailedImage()
+        public Proxies.DetailedImage ToDetailedImage()
         {
-            return new DetailedImage
-            {
-                Id = ImageId,
-                Path = ImagePath,
-                CreatedOn = ImageCreatedOn,
-                Profile = new DetailedProfile
-                {
-                    Name = ProfileName,
-                    Url = ProfileUrl,
-                    DetailedSource = new DetailedSource
-                    {
-                        Name = SourceName,
-                        Url = SourceUrl
-                    }
-                }
-            };
+            var detailedSource = new Proxies.DetailedSource(SourceName, SourceUrl);
+            var detailedProfile = new Proxies.DetailedProfile(ProfileName, ProfileUrl, detailedSource);
+            return new Proxies.DetailedImage(ImageId, ImagePath, ImageCreatedOn, detailedProfile);
         }
     }
 }

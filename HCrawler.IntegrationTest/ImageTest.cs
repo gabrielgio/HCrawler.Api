@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using HCrawler.Core;
-using HCrawler.Core.Repositories.Models;
+using HCrawler.CoreF;
 using Xunit;
 
 namespace HCrawler.IntegrationTest
@@ -17,8 +15,8 @@ namespace HCrawler.IntegrationTest
 
         private async Task Init()
         {
-            var image = GetService<Image>();
-            var createImage = new CreateImage
+            var image = GetService<Image.Image>();
+            var createImage = new Payloads.CreateImage
             {
                 CreatedOn = DateTime.Now,
                 ImagePath = "/root/Pictures",

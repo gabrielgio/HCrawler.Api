@@ -1,4 +1,4 @@
-using HCrawler.Core.Repositories.Models;
+using HCrawler.Core.Payloads;
 
 namespace HCrawler.Core.Repositories
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace HCrawler.Core.Repositories.Models
+namespace HCrawler.Core.Payloads
 {
     public class CreateImage
     {

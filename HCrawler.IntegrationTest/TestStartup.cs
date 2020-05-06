@@ -1,7 +1,7 @@
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using HCrawler.Core.Repositories;
+using HCrawler.CoreF;
 using HCrawler.DB.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Npgsql;
-using Image = HCrawler.Core.Image;
 
 namespace HCrawler.IntegrationTest
 {
@@ -27,7 +26,7 @@ namespace HCrawler.IntegrationTest
             services.AddControllers();
             services.AddControllersWithViews();
 
-            services.AddScoped<Image>();
+            services.AddScoped<Image.Image>();
             services.AddScoped<IImageRepository, ImageRepository>();
 
             services.AddSingleton<IDbConnection>(t =>

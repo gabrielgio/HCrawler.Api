@@ -1,4 +1,4 @@
-@model HCrawler.Api.ViewModels.Page<HCrawler.Core.Repositories.Models.DetailedImage>
+@model HCrawler.Api.ViewModels.Page<HCrawler.CoreF.Proxies.DetailedImage>
 
 <!DOCTYPE html>
 <html>
@@ -34,24 +34,24 @@
     </nav>
     @foreach (var image in Model.Results)
     {
-        <a href="/?name=@image.Profile.Name">
+        <a href="/?name=@image.DetailedProfile.Name">
             <div style="padding-bottom: 10px; padding-top: 10px">
                 <figure class="image">
                     @if (image.Path.Contains("mp4"))
                     {
                         <video muted autoplay loop>
-                            <source src="@image.Profile.DetailedSource.Name/@image.Path" type="video/mp4">
+                            <source src="@image.DetailedProfile.DetailedSource.Name/@image.Path" type="video/mp4">
                         </video>
                     }
                     else
                     {
-                        <img src="@image.Profile.DetailedSource.Name/@image.Path"/>
+                        <img src="@image.DetailedProfile.DetailedSource.Name/@image.Path"/>
                     }
                 </figure>
                 @if (Model.Name == null)
                 {
                     <span class="is-family-monospace is-size-7 has-text-black">
-                        @image.Profile.Name
+                        @image.DetailedProfile.Name
                     </span>
                 }
             </div>

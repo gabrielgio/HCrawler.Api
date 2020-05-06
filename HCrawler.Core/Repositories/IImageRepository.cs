@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HCrawler.Core.Repositories.Models;
+using HCrawler.Core.Proxies;
 
 namespace HCrawler.Core.Repositories
 {

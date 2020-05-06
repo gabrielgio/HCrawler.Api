@@ -4,9 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using HCrawler.Core;
-using HCrawler.Core.Repositories;
-using HCrawler.Core.Repositories.Models;
+using HCrawler.CoreF;
 using HCrawler.DB.Repositories.DbModel;
 
 namespace HCrawler.DB.Repositories
@@ -30,7 +28,7 @@ namespace HCrawler.DB.Repositories
             return string.Empty;
         }
 
-        public async Task<IEnumerable<DetailedImage>> GetAll(PageFilter pageFilter)
+        public async Task<IEnumerable<Proxies.DetailedImage>> GetAllAsync(Payloads.PageFilter pageFilter)
         {
             var checkpoint = pageFilter.Checkpoint ?? DateTime.MaxValue;
 
@@ -83,7 +81,7 @@ namespace HCrawler.DB.Repositories
             return _connection.ExecuteScalarAsync<bool>(sql, new {imagePath});
         }
 
-        public Task<int> StoreProfileAsync(StoreProfile storeProfile)
+        public Task<int> StoreProfileAsync(Payloads.StoreProfile storeProfile)
         {
             var sql = @"
             INSERT INTO ""Profiles"" (""Name"", ""SourceId"", ""Url"")
@@ -94,7 +92,7 @@ namespace HCrawler.DB.Repositories
                 new {name = storeProfile.Name, sourceId = storeProfile.SourceId, url = storeProfile.Url});
         }
 
-        public Task<int> StoreSourceAsync(StoreSource storeSource)
+        public Task<int> StoreSourceAsync(Payloads.StoreSource storeSource)
         {
             var sql = @"
             INSERT INTO ""Sources"" (""Name"", ""Url"")
@@ -104,7 +102,7 @@ namespace HCrawler.DB.Repositories
             return _connection.QueryFirstAsync<int>(sql, new {name = storeSource.Name, url = storeSource.Url});
         }
 
-        public Task<int> StoreImageAsync(StoreImage storeImage)
+        public Task<int> StoreImageAsync(Payloads.StoreImage storeImage)
         {
             var sql = @"
             INSERT INTO  ""Images"" (""ProfileId"", ""Path"", ""Url"", ""CreatedOn"")
