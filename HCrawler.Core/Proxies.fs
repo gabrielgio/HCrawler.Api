@@ -1,4 +1,4 @@
-module HCrawler.CoreF.Proxies
+module HCrawler.Core.Proxies
 
 open System
 

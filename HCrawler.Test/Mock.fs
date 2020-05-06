@@ -1,9 +1,9 @@
 module HCrawler.Test.Mock
 
 open System.Collections.Generic
-open HCrawler.CoreF
-open HCrawler.CoreF.Payloads
-open HCrawler.CoreF.Proxies
+open HCrawler.Core
+open HCrawler.Core.Payloads
+open HCrawler.Core.Proxies
 open Moq
 
 

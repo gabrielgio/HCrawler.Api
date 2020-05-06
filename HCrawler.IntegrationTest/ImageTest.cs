@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using HCrawler.CoreF;
+using HCrawler.Core;
 using Xunit;
 
 namespace HCrawler.IntegrationTest

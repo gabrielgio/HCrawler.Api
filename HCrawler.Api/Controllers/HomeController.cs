@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using HCrawler.Api.ViewModels;
-using HCrawler.CoreF;
+using HCrawler.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HCrawler.Api.Controllers

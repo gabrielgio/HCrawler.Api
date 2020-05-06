@@ -1,9 +1,9 @@
-namespace HCrawler.CoreF
+namespace HCrawler.Core
 
 open System.Collections.Generic
 open System.Threading.Tasks
-open HCrawler.CoreF.Payloads
-open HCrawler.CoreF.Proxies
+open HCrawler.Core.Payloads
+open HCrawler.Core.Proxies
 
 type IImageRepository =
     abstract GetAllAsync: PageFilter -> Task<IEnumerable<DetailedImage>>

@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HCrawler.CoreF\HCrawler.CoreF.fsproj" />
+      <ProjectReference Include="..\HCrawler.Core\HCrawler.Core.fsproj" />
     </ItemGroup>
 
 </Project>

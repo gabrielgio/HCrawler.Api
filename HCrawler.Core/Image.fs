@@ -1,7 +1,7 @@
-module HCrawler.CoreF.Image
+module HCrawler.Core.Image
 
 open System.Threading.Tasks
-open HCrawler.CoreF.Payloads
+open HCrawler.Core.Payloads
 
 type Image(imageRepo: IImageRepository) =
     member this.GetAllAsync pageFilter = imageRepo.GetAllAsync pageFilter

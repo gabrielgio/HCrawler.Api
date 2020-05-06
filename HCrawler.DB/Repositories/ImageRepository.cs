@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using HCrawler.CoreF;
+using HCrawler.Core;
 using HCrawler.DB.Repositories.DbModel;
 
 namespace HCrawler.DB.Repositories

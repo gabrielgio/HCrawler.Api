@@ -1,7 +1,7 @@
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using HCrawler.CoreF;
+using HCrawler.Core;
 using HCrawler.DB.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

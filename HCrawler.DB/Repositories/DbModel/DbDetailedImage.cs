@@ -1,5 +1,5 @@
 using System;
-using HCrawler.CoreF;
+using HCrawler.Core;
 
 namespace HCrawler.DB.Repositories.DbModel
 {

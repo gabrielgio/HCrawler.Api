@@ -1,8 +1,8 @@
 module HCrawler.Test.ImageTests
 
 open System
-open HCrawler.CoreF.Image
-open HCrawler.CoreF.Payloads
+open HCrawler.Core.Image
+open HCrawler.Core.Payloads
 open Xunit
 open HCrawler.Test.Mock
 open FsUnit

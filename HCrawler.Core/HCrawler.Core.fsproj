@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>HCrawler.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Library.fs" />
         <Compile Include="Payloads.fs" />
         <Compile Include="Proxies.fs" />
         <Compile Include="IImageRepository.fs" />

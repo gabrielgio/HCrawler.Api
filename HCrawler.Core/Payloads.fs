@@ -1,4 +1,4 @@
-module HCrawler.CoreF.Payloads
+module HCrawler.Core.Payloads
 
 open System
 

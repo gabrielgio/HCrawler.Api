@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HCrawler.CoreF;
+using HCrawler.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HCrawler.Api.Controllers

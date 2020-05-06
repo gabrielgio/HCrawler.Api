@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.IntegrationTest", 
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HCrawler.Test", "HCrawler.Test\HCrawler.Test.fsproj", "{313F9D16-AFA5-4F81-9B31-39AD884E6CA3}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HCrawler.CoreF", "HCrawler.CoreF\HCrawler.CoreF.fsproj", "{1FA5E3BB-AEC7-460C-8893-9DC9692E3507}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HCrawler.Core", "HCrawler.Core\HCrawler.Core.fsproj", "{1FA5E3BB-AEC7-460C-8893-9DC9692E3507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
