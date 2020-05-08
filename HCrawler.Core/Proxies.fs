@@ -15,5 +15,6 @@ type DetailedImage =
     { Id: int
       Path: string
       CreatedOn: DateTime
+      Url: string
       DetailedProfile: DetailedProfile }
     

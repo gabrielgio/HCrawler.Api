@@ -39,7 +39,8 @@ namespace HCrawler.DB.Repositories
                    P.""Url"" ProfileUrl,
                    S.""Name"" SourceName,
                    S.""Url"" SourceUrl,
-                   I.""CreatedOn"" ImageCreatedOn
+                   I.""CreatedOn"" ImageCreatedOn,
+                   I.""Url"" ImageUrl
             FROM ""Images"" I
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
             INNER JOIN ""Sources"" S on P.""SourceId"" = S.""Id""

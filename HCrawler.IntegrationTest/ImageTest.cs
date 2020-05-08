@@ -1,24 +1,25 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using HCrawler.Core;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace HCrawler.IntegrationTest
 {
     public class ImageTest : WebFixture<TestStartup>
     {
+        private readonly Payloads.CreateImage _createImage;
+
         public ImageTest()
         {
-            Init().Wait();
-        }
-
-        private async Task Init()
-        {
-            var image = GetService<Image.Image>();
-            var createImage = new Payloads.CreateImage
+            _createImage = new Payloads.CreateImage
             {
-                CreatedOn = DateTime.Now,
+                CreatedOn = DateTime.UtcNow,
                 ImagePath = "/root/Pictures",
                 ImageUrl = "https://duckduckgo.com",
                 ProfileName = "SomeDude",
@@ -26,7 +27,37 @@ namespace HCrawler.IntegrationTest
                 SourceName = "SomePace",
                 SourceUrl = "https://someplece.com/"
             };
-            await image.CreateImageIfNotExistsAsync(createImage);
+            Init().Wait();
+        }
+
+        private async Task Init()
+        {
+            var image = GetService<Image.Image>();
+            await image.CreateImageIfNotExistsAsync(_createImage);
+
+            var oldCreateImage = new Payloads.CreateImage
+            {
+                CreatedOn = DateTime.UtcNow.AddDays(-1),
+                ImagePath = "/root/Pictures2",
+                ImageUrl = "https://duckduckgo2.com",
+                ProfileName = "SomeDude",
+                ProfileUrl = "http://duckduckgo.com",
+                SourceName = "SomePace",
+                SourceUrl = "https://someplece.com/"
+            };
+            await image.CreateImageIfNotExistsAsync(oldCreateImage);
+
+            oldCreateImage = new Payloads.CreateImage
+            {
+                CreatedOn = DateTime.UtcNow.AddDays(-1),
+                ImagePath = "/root/Pictures3",
+                ImageUrl = "https://duckduckgo3.com",
+                ProfileName = "SomeDude2",
+                ProfileUrl = "http://duckduckgo2.com",
+                SourceName = "SomePace",
+                SourceUrl = "https://someplece.com/"
+            };
+            await image.CreateImageIfNotExistsAsync(oldCreateImage);
         }
 
         [Fact]
@@ -35,15 +66,68 @@ namespace HCrawler.IntegrationTest
             const string route = "/images";
             var response = await Client.GetAsync(route);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.DetailedImage>>(json).ToList();
+            var image = images.First();
+
+            Assert.True(3 == images.Count);
+
+            Assert.Equal(_createImage.ImagePath, image.Path);
+            Assert.Equal(_createImage.ImageUrl, image.Url);
+            Assert.Equal(_createImage.ProfileName, image.DetailedProfile.Name);
+            Assert.Equal(_createImage.ProfileUrl, image.DetailedProfile.Url);
+            Assert.Equal(_createImage.SourceName, image.DetailedProfile.DetailedSource.Name);
+            Assert.Equal(_createImage.SourceUrl, image.DetailedProfile.DetailedSource.Url);
         }
 
 
         [Fact]
         public async Task GetAsyncWithParam()
         {
-            const string route = "/images?name=SomeDude";
+            var route = $"/images?name={_createImage.ProfileName}";
             var response = await Client.GetAsync(route);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.DetailedImage>>(json).ToList();
+            var image = images.First();
+
+            Assert.True(2 == images.Count);
+
+            Assert.Equal(_createImage.ImagePath, image.Path);
+            Assert.Equal(_createImage.ImageUrl, image.Url);
+            Assert.Equal(_createImage.ProfileName, image.DetailedProfile.Name);
+            Assert.Equal(_createImage.ProfileUrl, image.DetailedProfile.Url);
+            Assert.Equal(_createImage.SourceName, image.DetailedProfile.DetailedSource.Name);
+            Assert.Equal(_createImage.SourceUrl, image.DetailedProfile.DetailedSource.Url);
+        }
+
+        [Fact]
+        public async Task GetAsyncWithParam_Empty()
+        {
+            const string route = "/images?name=skjdskdskja";
+            var response = await Client.GetAsync(route);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.DetailedImage>>(json).ToList();
+
+            Assert.True(0 == images.Count);
+        }
+
+
+        [Fact]
+        public async Task CreateImage()
+        {
+            const string route = "/images";
+            var json = JsonConvert.SerializeObject(_createImage);
+            var stringContent = new StringContent(json, Encoding.Default, "application/json");
+            
+            var response = await Client.PostAsync(route, stringContent);
+            
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
         }
     }
 }

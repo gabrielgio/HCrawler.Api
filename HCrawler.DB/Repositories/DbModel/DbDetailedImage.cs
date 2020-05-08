@@ -17,6 +17,7 @@ namespace HCrawler.DB.Repositories.DbModel
 
         public string SourceUrl { get; set; }
 
+        public string ImageUrl { get; set; }
 
         public DateTime ImageCreatedOn { get; set; }
 
@@ -24,7 +25,7 @@ namespace HCrawler.DB.Repositories.DbModel
         {
             var detailedSource = new Proxies.DetailedSource(SourceName, SourceUrl);
             var detailedProfile = new Proxies.DetailedProfile(ProfileName, ProfileUrl, detailedSource);
-            return new Proxies.DetailedImage(ImageId, ImagePath, ImageCreatedOn, detailedProfile);
+            return new Proxies.DetailedImage(ImageId, ImagePath, ImageCreatedOn, ImageUrl,detailedProfile);
         }
     }
 }
