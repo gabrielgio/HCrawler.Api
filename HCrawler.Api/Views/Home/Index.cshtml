@@ -17,7 +17,7 @@
             </a>
             @if (@Model.Name is object)
             {
-                <a class="navbar-item is-uppercase is-family-monospace" href="/?name=@Model.Name">
+                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="@Model.Results.First().DetailedProfile.Url">
                     @Model.Name
                 </a>
             }
@@ -51,7 +51,7 @@
                 @if (Model.Name == null)
                 {
                     <span class="is-family-monospace is-size-7 has-text-black">
-                        @image.DetailedProfile.Name
+                        @image.DetailedProfile.Name/<a target="_blank" rel="noopener noreferrer" class="is-family-monospace is-size-7 has-text-black" href="@image.Url">@image.DetailedProfile.DetailedSource.Name</a>
                     </span>
                 }
             </div>
