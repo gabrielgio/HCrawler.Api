@@ -4,64 +4,64 @@ open System.Threading.Tasks
 open HCrawler.Core.Payloads
 
 type Image(imageRepo: IImageRepository) =
-    member this.GetAllAsync pageFilter = imageRepo.GetAllAsync pageFilter
+    member this.getAllAsync pageFilter = imageRepo.getAllAsync pageFilter
 
-    member this.CreateSourceIfNotExistsAsync(createImage: CreateImage) =
+    member this.createSourceIfNotExistsAsync(createImage: CreateImage) =
         let sourceName = createImage.SourceName
 
         let exists =
-            imageRepo.SourceExistsAsync sourceName
+            imageRepo.sourceExistsAsync sourceName
             |> Async.AwaitTask
             |> Async.RunSynchronously
 
         match exists with
-        | true -> imageRepo.GetSourceIdByNameAsync sourceName
+        | true -> imageRepo.getSourceIdByNameAsync sourceName
         | false ->
-            imageRepo.StoreSourceAsync
+            imageRepo.storeSourceAsync
                 { Name = sourceName
                   Url = createImage.SourceUrl }
 
-    member this.CreateProfileAsync(createImage: CreateImage) =
+    member this.createProfileAsync(createImage: CreateImage) =
         let sourceId =
-            this.CreateSourceIfNotExistsAsync createImage
+            this.createSourceIfNotExistsAsync createImage
             |> Async.AwaitTask
             |> Async.RunSynchronously
 
-        imageRepo.StoreProfileAsync
+        imageRepo.storeProfileAsync
             { SourceId = sourceId
               Name = createImage.ProfileName
               Url = createImage.ProfileUrl }
 
-    member this.CreateProfileIfNotExistsAsync(createImage: CreateImage) =
+    member this.createProfileIfNotExistsAsync(createImage: CreateImage) =
         let profileName = createImage.ProfileName
 
         let exists =
-            imageRepo.ProfileExistsAsync profileName
+            imageRepo.profileExistsAsync profileName
             |> Async.AwaitTask
             |> Async.RunSynchronously
 
         if exists
-        then imageRepo.GetProfileIdByNameAsync profileName
-        else this.CreateProfileAsync createImage
+        then imageRepo.getProfileIdByNameAsync profileName
+        else this.createProfileAsync createImage
 
-    member this.CreateImageAsync(createImage: CreateImage) =
+    member this.createImageAsync(createImage: CreateImage) =
         let profileId =
-            this.CreateProfileIfNotExistsAsync createImage
+            this.createProfileIfNotExistsAsync createImage
             |> Async.AwaitTask
             |> Async.RunSynchronously
 
-        imageRepo.StoreImageAsync
+        imageRepo.storeImageAsync
             { ProfileId = profileId
               Path = createImage.ImagePath
               Url = createImage.ImageUrl
               CreatedOn = createImage.CreatedOn }
 
-    member this.CreateImageIfNotExistsAsync(createImage: CreateImage) =
+    member this.createImageIfNotExistsAsync(createImage: CreateImage) =
         let imagePath = createImage.ImagePath
 
         let exists =
-            imageRepo.ImageExistsAsync imagePath
+            imageRepo.imageExistsAsync imagePath
             |> Async.AwaitTask
             |> Async.RunSynchronously
 
-        if exists then Task.FromResult(0) else this.CreateImageAsync createImage
+        if exists then Task.FromResult(0) else this.createImageAsync createImage

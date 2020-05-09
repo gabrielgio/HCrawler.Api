@@ -23,7 +23,14 @@ let ``Create Source If Exist`` sourceName sourceId =
     let image = Image(imageRepo)
 
     let newSourceId =
-        image.CreateSourceIfNotExistsAsync(CreateImage(SourceName = sourceName))
+        { ImagePath = String.Empty
+          CreatedOn = DateTime.Now
+          SourceName = sourceName
+          ProfileName = String.Empty
+          ImageUrl = String.Empty
+          ProfileUrl = String.Empty
+          SourceUrl = String.Empty }
+        |> image.createSourceIfNotExistsAsync
         |> Async.AwaitTask
         |> Async.RunSynchronously
 
@@ -48,7 +55,14 @@ let ``Create Source If Not Exists`` sourceName sourceId sourceUrl =
     let image = Image(imageRepo)
 
     let newSourceId =
-        image.CreateSourceIfNotExistsAsync(CreateImage(SourceName = sourceName, SourceUrl = sourceUrl))
+        { ImagePath = String.Empty
+          CreatedOn = DateTime.Now
+          SourceName = sourceName
+          ProfileName = String.Empty
+          ImageUrl = String.Empty
+          ProfileUrl = String.Empty
+          SourceUrl = sourceUrl }
+        |> image.createSourceIfNotExistsAsync
         |> Async.AwaitTask
         |> Async.RunSynchronously
 
@@ -76,14 +90,21 @@ let ``Create Profile If Not Exists`` sourceName sourceId url profileName profile
     let image = Image(imageRepo)
 
     let newProfileId =
-        CreateImage(SourceName = sourceName, ProfileName = profileName, ProfileUrl = url)
-        |> image.CreateProfileIfNotExistsAsync
+
+        { ImagePath = String.Empty
+          CreatedOn = DateTime.Now
+          SourceName = sourceName
+          ProfileName = profileName 
+          ImageUrl = url
+          ProfileUrl = url
+          SourceUrl = url }
+        |> image.createProfileIfNotExistsAsync
         |> Async.AwaitTask
         |> Async.RunSynchronously
 
     newProfileId |> should equal profileId
     mock.VerifyAll()
-    
+
 
 [<Theory>]
 [<InlineData("source name", 1, "http://localhost/", "profile name", 2)>]
@@ -104,8 +125,14 @@ let ``Create Profile If Exists`` sourceName sourceId url profileName profileId =
     let image = Image(imageRepo)
 
     let newProfileId =
-        CreateImage(SourceName = sourceName, ProfileName = profileName, ProfileUrl = url)
-        |> image.CreateProfileIfNotExistsAsync
+        { ImagePath = String.Empty
+          CreatedOn = DateTime.Now
+          SourceName = sourceName
+          ProfileName = profileName
+          ImageUrl = url
+          ProfileUrl = url
+          SourceUrl = url }
+        |> image.createProfileIfNotExistsAsync
         |> Async.AwaitTask
         |> Async.RunSynchronously
 
@@ -124,13 +151,23 @@ let ``Create Image If Not Exists`` path sourceName sourceId profileName profileI
         |> mockProfileExistsAsync profileName true
         |> mockGetProfileIdByNameAsync profileName profileId
         |> mockImageExistsAsync path false
-        |> mockStoreImageAsync {ProfileId=profileId; Path=path; Url=url; CreatedOn=dateTime} 0
+        |> mockStoreImageAsync
+            { ProfileId = profileId
+              Path = path
+              Url = url
+              CreatedOn = dateTime } 0
         |> spawn
 
     let image = Image(imageRepo)
 
-    CreateImage(ImagePath = path, CreatedOn = dateTime, SourceName = sourceName, ProfileName = profileName, ImageUrl = url)
-    |> image.CreateImageIfNotExistsAsync
+    { ImagePath = path
+      CreatedOn = dateTime
+      SourceName = sourceName
+      ProfileName = profileName
+      ImageUrl = url
+      ProfileUrl = url
+      SourceUrl = url }
+    |> image.createImageIfNotExistsAsync
     |> Async.AwaitTask
     |> Async.RunSynchronously
     |> ignore
@@ -150,8 +187,14 @@ let ``Create Image If Exists`` path sourceName sourceId profileName profileId ur
 
     let image = Image(imageRepo)
 
-    CreateImage(ImagePath = path, CreatedOn = dateTime, SourceName = sourceName, ProfileName = profileName, ImageUrl = url)
-    |> image.CreateImageIfNotExistsAsync
+    { ImagePath = path
+      CreatedOn = dateTime
+      SourceName = sourceName
+      ProfileName = profileName
+      ImageUrl = url
+      ProfileUrl = url
+      SourceUrl = url }
+    |> image.createImageIfNotExistsAsync
     |> Async.AwaitTask
     |> Async.RunSynchronously
     |> ignore

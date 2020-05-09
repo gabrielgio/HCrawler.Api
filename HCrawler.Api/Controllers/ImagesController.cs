@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using HCrawler.Api.ViewModels;
 using HCrawler.Core;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,17 +17,16 @@ namespace HCrawler.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] Payloads.PageFilter filter)
+        public async Task<IActionResult> Get([FromQuery] PageFilter filter)
         {
-            var page = await _image.GetAllAsync(filter);
-
+            var page = await _image.getAllAsync(filter.ToRecord());
             return Ok(page);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Payloads.CreateImage createImage)
+        public async Task<IActionResult> Post([FromBody] CreateImage createImage)
         {
-            await _image.CreateImageIfNotExistsAsync(createImage);
+            await _image.createImageIfNotExistsAsync(createImage.ToRecord());
             return Ok();
         }
     }

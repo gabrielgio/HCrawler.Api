@@ -21,7 +21,7 @@ namespace HCrawler.DB.Repositories.DbModel
 
         public DateTime ImageCreatedOn { get; set; }
 
-        public Proxies.DetailedImage ToDetailedImage()
+        public Proxies.DetailedImage ToRecord()
         {
             var detailedSource = new Proxies.DetailedSource(SourceName, SourceUrl);
             var detailedProfile = new Proxies.DetailedProfile(ProfileName, ProfileUrl, detailedSource);

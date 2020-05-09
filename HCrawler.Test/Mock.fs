@@ -15,28 +15,28 @@ let spawn (source:Mock<IImageRepository>) =
 
 let mockGetAllAsync pageFilter (result:IEnumerable<DetailedImage>) (source:Mock<IImageRepository>) =
    source
-       .Setup(fun x -> x.GetAllAsync(pageFilter))
+       .Setup(fun x -> x.getAllAsync(pageFilter))
        .ReturnsAsync(result)
    |> ignore
    source
    
 let mockProfileExistsAsync profileName (result:bool) (source: Mock<IImageRepository>) =
     source
-        .Setup(fun x -> x.ProfileExistsAsync(profileName))
+        .Setup(fun x -> x.profileExistsAsync(profileName))
         .ReturnsAsync result
     |> ignore
     source
    
 let mockSourceExistsAsync sourceName (result:bool) (source: Mock<IImageRepository>) =
     source
-        .Setup(fun x -> x.SourceExistsAsync(sourceName))
+        .Setup(fun x -> x.sourceExistsAsync(sourceName))
         .ReturnsAsync result
     |> ignore
     source
     
 let mockImageExistsAsync imagePath (result: bool) (source: Mock<IImageRepository>) =
     source
-        .Setup(fun x -> x.ImageExistsAsync(imagePath))
+        .Setup(fun x -> x.imageExistsAsync(imagePath))
         .ReturnsAsync result
     |> ignore
     source
@@ -46,7 +46,7 @@ let mockStoreProfileAsync (storeProfile: StoreProfile) (result: int) (source: Mo
     let url = storeProfile.Url
     let sourceId = storeProfile.SourceId
     source
-        .Setup(fun x -> x.StoreProfileAsync(It.Is(fun (y: StoreProfile) ->
+        .Setup(fun x -> x.storeProfileAsync(It.Is(fun (y: StoreProfile) ->
             y.Name = name &&
             y.Url = url &&
             y.SourceId = sourceId)))
@@ -58,7 +58,7 @@ let mockStoreSourceAsync (storeSource: StoreSource) (result: int) (source: Mock<
     let name = storeSource.Name
     let url = storeSource.Url
     source
-        .Setup(fun x -> x.StoreSourceAsync(It.Is(fun (y: StoreSource) ->
+        .Setup(fun x -> x.storeSourceAsync(It.Is(fun (y: StoreSource) ->
             y.Name = name &&
             y.Url = url)))
         .ReturnsAsync result
@@ -68,7 +68,7 @@ let mockStoreSourceAsync (storeSource: StoreSource) (result: int) (source: Mock<
 
 let mockStoreImageAsync (storeImage: StoreImage) (result: int) (source: Mock<IImageRepository>) =
     source
-        .Setup(fun x -> x.StoreImageAsync(It.Is(fun (y: StoreImage) ->
+        .Setup(fun x -> x.storeImageAsync(It.Is(fun (y: StoreImage) ->
             y.Path = storeImage.Path &&
             y.ProfileId = storeImage.ProfileId &&
             y.CreatedOn = storeImage.CreatedOn &&
@@ -80,14 +80,14 @@ let mockStoreImageAsync (storeImage: StoreImage) (result: int) (source: Mock<IIm
     
 let mockGetProfileIdByNameAsync profileName (result: int) (source: Mock<IImageRepository>) =
     source
-        .Setup(fun x -> x.GetProfileIdByNameAsync(profileName))
+        .Setup(fun x -> x.getProfileIdByNameAsync(profileName))
         .ReturnsAsync(result)
     |> ignore
     source
     
 let mockGetSourceIdByNameAsync sourceName (result: int) (source: Mock<IImageRepository>) =
     source
-        .Setup(fun x -> x.GetSourceIdByNameAsync(sourceName))
+        .Setup(fun x -> x.getSourceIdByNameAsync(sourceName))
         .ReturnsAsync(result)
     |> ignore
     source

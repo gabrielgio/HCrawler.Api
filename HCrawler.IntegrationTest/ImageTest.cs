@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using HCrawler.Api.ViewModels;
 using HCrawler.Core;
 using Newtonsoft.Json;
 using Xunit;
@@ -13,11 +14,11 @@ namespace HCrawler.IntegrationTest
 {
     public class ImageTest : WebFixture<TestStartup>
     {
-        private readonly Payloads.CreateImage _createImage;
+        private readonly CreateImage _createImage;
 
         public ImageTest()
         {
-            _createImage = new Payloads.CreateImage
+            _createImage = new CreateImage
             {
                 CreatedOn = DateTime.UtcNow,
                 ImagePath = "/root/Pictures",
@@ -33,9 +34,9 @@ namespace HCrawler.IntegrationTest
         private async Task Init()
         {
             var image = GetService<Image.Image>();
-            await image.CreateImageIfNotExistsAsync(_createImage);
+            await image.createImageIfNotExistsAsync(_createImage.ToRecord());
 
-            var oldCreateImage = new Payloads.CreateImage
+            var oldCreateImage = new CreateImage
             {
                 CreatedOn = DateTime.UtcNow.AddDays(-1),
                 ImagePath = "/root/Pictures2",
@@ -45,9 +46,9 @@ namespace HCrawler.IntegrationTest
                 SourceName = "SomePace",
                 SourceUrl = "https://someplece.com/"
             };
-            await image.CreateImageIfNotExistsAsync(oldCreateImage);
+            await image.createImageIfNotExistsAsync(oldCreateImage.ToRecord());
 
-            oldCreateImage = new Payloads.CreateImage
+            oldCreateImage = new CreateImage
             {
                 CreatedOn = DateTime.UtcNow.AddDays(-1),
                 ImagePath = "/root/Pictures3",
@@ -57,7 +58,7 @@ namespace HCrawler.IntegrationTest
                 SourceName = "SomePace",
                 SourceUrl = "https://someplece.com/"
             };
-            await image.CreateImageIfNotExistsAsync(oldCreateImage);
+            await image.createImageIfNotExistsAsync(oldCreateImage.ToRecord());
         }
 
         [Fact]

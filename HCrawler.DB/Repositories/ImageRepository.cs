@@ -28,7 +28,7 @@ namespace HCrawler.DB.Repositories
             return string.Empty;
         }
 
-        public async Task<IEnumerable<Proxies.DetailedImage>> GetAllAsync(Payloads.PageFilter pageFilter)
+        public async Task<IEnumerable<Proxies.DetailedImage>> getAllAsync(Payloads.PageFilter pageFilter)
         {
             var checkpoint = pageFilter.Checkpoint ?? DateTime.MaxValue;
 
@@ -52,10 +52,10 @@ namespace HCrawler.DB.Repositories
 
             var dbImages = await _connection.QueryAsync<DbDetailedImage>(sql, new {checkpoint, size = pageFilter.Size});
 
-            return dbImages.Select(x => x.ToDetailedImage());
+            return dbImages.Select(x => x.ToRecord());
         }
 
-        public Task<bool> ProfileExistsAsync(string profileName)
+        public Task<bool> profileExistsAsync(string profileName)
         {
             var sql = @"
             SELECT COUNT(1) FROM ""Profiles""
@@ -64,7 +64,7 @@ namespace HCrawler.DB.Repositories
             return _connection.ExecuteScalarAsync<bool>(sql, new {profileName});
         }
 
-        public Task<bool> SourceExistsAsync(string sourceName)
+        public Task<bool> sourceExistsAsync(string sourceName)
         {
             var sql = @"
             SELECT COUNT(1) FROM ""Sources""
@@ -73,7 +73,7 @@ namespace HCrawler.DB.Repositories
             return _connection.ExecuteScalarAsync<bool>(sql, new {sourceName});
         }
 
-        public Task<bool> ImageExistsAsync(string imagePath)
+        public Task<bool> imageExistsAsync(string imagePath)
         {
             var sql = @"
             SELECT COUNT(1) FROM ""Images"" 
@@ -82,7 +82,7 @@ namespace HCrawler.DB.Repositories
             return _connection.ExecuteScalarAsync<bool>(sql, new {imagePath});
         }
 
-        public Task<int> StoreProfileAsync(Payloads.StoreProfile storeProfile)
+        public Task<int> storeProfileAsync(Payloads.StoreProfile storeProfile)
         {
             var sql = @"
             INSERT INTO ""Profiles"" (""Name"", ""SourceId"", ""Url"")
@@ -93,7 +93,7 @@ namespace HCrawler.DB.Repositories
                 new {name = storeProfile.Name, sourceId = storeProfile.SourceId, url = storeProfile.Url});
         }
 
-        public Task<int> StoreSourceAsync(Payloads.StoreSource storeSource)
+        public Task<int> storeSourceAsync(Payloads.StoreSource storeSource)
         {
             var sql = @"
             INSERT INTO ""Sources"" (""Name"", ""Url"")
@@ -103,7 +103,7 @@ namespace HCrawler.DB.Repositories
             return _connection.QueryFirstAsync<int>(sql, new {name = storeSource.Name, url = storeSource.Url});
         }
 
-        public Task<int> StoreImageAsync(Payloads.StoreImage storeImage)
+        public Task<int> storeImageAsync(Payloads.StoreImage storeImage)
         {
             var sql = @"
             INSERT INTO  ""Images"" (""ProfileId"", ""Path"", ""Url"", ""CreatedOn"")
@@ -120,7 +120,7 @@ namespace HCrawler.DB.Repositories
                 });
         }
 
-        public Task<int> GetProfileIdByNameAsync(string profileName)
+        public Task<int> getProfileIdByNameAsync(string profileName)
         {
             var sql = @"
             SELECT P.""Id"" FROM ""Profiles"" P
@@ -130,7 +130,7 @@ namespace HCrawler.DB.Repositories
             return _connection.QuerySingleAsync<int>(sql, new {profileName});
         }
 
-        public Task<int> GetSourceIdByNameAsync(string sourceName)
+        public Task<int> getSourceIdByNameAsync(string sourceName)
         {
             var sql = @"
             SELECT S.""Id"" FROM ""Sources"" S
