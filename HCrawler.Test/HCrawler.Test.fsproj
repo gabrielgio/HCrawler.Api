@@ -10,6 +10,7 @@
     <ItemGroup>
         <Compile Include="Mock.fs" />
         <Compile Include="ImageTests.fs" />
+        <Compile Include="InstagramTests.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,6 +26,21 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HCrawler.Core\HCrawler.Core.fsproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Data\carousel.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Data\image.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Data\video.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <EmbeddedResource Include="ProviderData\merged.json">
+        <Link>ProviderData\merged.json</Link>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>
