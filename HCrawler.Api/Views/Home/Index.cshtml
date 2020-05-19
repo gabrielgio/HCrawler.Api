@@ -17,7 +17,7 @@
             </a>
             @if (@Model.Name is object)
             {
-                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="@Model.Results.First().DetailedProfile.Url">
+                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="@Model.Results.FirstOrDefault()?.DetailedProfile.Url">
                     @Model.Name
                 </a>
             }
@@ -34,28 +34,28 @@
     </nav>
     @foreach (var image in Model.Results)
     {
-        <a href="/?name=@image.DetailedProfile.Name">
-            <div style="padding-bottom: 10px; padding-top: 10px">
+        <div style="padding-bottom: 10px; padding-top: 10px">
+            @if (image.Path.Contains("mp4"))
+            {
+                <video muted loop controls="controls" preload="metadata">
+                    <source src="@image.DetailedProfile.DetailedSource.Name/@image.Path#t=0.5" type="video/mp4">
+                </video>
+            }
+            else
+            {
                 <figure class="image">
-                    @if (image.Path.Contains("mp4"))
-                    {
-                        <video muted autoplay loop>
-                            <source src="@image.DetailedProfile.DetailedSource.Name/@image.Path" type="video/mp4">
-                        </video>
-                    }
-                    else
-                    {
-                        <img src="@image.DetailedProfile.DetailedSource.Name/@image.Path"/>
-                    }
+                    <img src="@image.DetailedProfile.DetailedSource.Name/@image.Path"/>
                 </figure>
-                @if (Model.Name == null)
-                {
+            }
+            @if (Model.Name == null)
+            {
+                <a href="/?name=@image.DetailedProfile.Name">
                     <span class="is-family-monospace is-size-7 has-text-black">
                         @image.DetailedProfile.Name/<a target="_blank" rel="noopener noreferrer" class="is-family-monospace is-size-7 has-text-black" href="@image.Url">@image.DetailedProfile.DetailedSource.Name</a>
                     </span>
-                }
-            </div>
-        </a>
+                </a>
+            }
+        </div>
     }
 </div>
 </body>
