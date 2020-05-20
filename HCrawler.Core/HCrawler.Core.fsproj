@@ -9,6 +9,7 @@
     <ItemGroup>
         <Compile Include="Payloads.fs" />
         <Compile Include="Proxies.fs" />
+        <Compile Include="IDownloader.fs" />
         <Compile Include="IImageRepository.fs" />
         <Compile Include="Image.fs" />
         <Compile Include="Instagram.fs" />
@@ -19,9 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="ProviderData\merged.json" >
-          <Link>ProviderData\merged.json</Link>
-      </EmbeddedResource>
+      <Content Include="ProviderData\merged.json" />
     </ItemGroup>
 
 </Project>

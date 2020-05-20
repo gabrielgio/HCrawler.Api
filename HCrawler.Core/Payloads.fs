@@ -30,3 +30,7 @@ type PageFilter =
     { Size: int
       Checkpoint: Nullable<DateTime>
       Name: string }
+
+type Download =
+    { Path: string
+      Url: string }

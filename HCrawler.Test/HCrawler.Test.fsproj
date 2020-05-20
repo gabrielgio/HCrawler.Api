@@ -38,9 +38,7 @@
       <Content Include="Data\video.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
-      <EmbeddedResource Include="ProviderData\merged.json">
-        <Link>ProviderData\merged.json</Link>
-      </EmbeddedResource>
+      <Content Include="ProviderData\merged.json" />
     </ItemGroup>
 
 </Project>

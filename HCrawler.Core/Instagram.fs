@@ -71,12 +71,64 @@ let getSinglePayload  (root: Post.Root) (carouselMedia: Post.CarouselMedia) =
     
 let getCarouselPayload (root: Post.Root) =
     root.Post.CarouselMedia
-    |> Array.map(getSinglePayload(root))
+    |> Seq.map(getSinglePayload(root))
 
 let getPayload (root: Post.Root) =
     let mediaType = root.Post.MediaType
 
     match mediaType with
-    | 1 -> [| getImagePayload root |]
-    | 2 -> [| getVideoPayload root |]
+    | 1 -> seq { getImagePayload root }
+    | 2 -> seq { getVideoPayload root }
     | _ -> getCarouselPayload root
+
+let getImageDownload (root: Post.Root) =
+    let url = root.Post.ImageVersions2.Candidates.[0].Url
+    let path = getImagePath root
+               |> sprintf "%s/%s" instagram
+    
+    { Path = path
+      Url =  url }
+    
+let getVideoDownload (root: Post.Root) =
+    let url = root.Post.VideoVersions.[0].Url
+    let path = getVideoPath root
+               |> sprintf "%s/%s" instagram
+                
+    { Path = path
+      Url =  url }
+
+let getImageCarouselDownload (root: Post.Root) (media: Post.CarouselMedia) =
+    let url = media.ImageVersions2.Candidates.[0].Url
+    let path = getImageCarouselPath root.User media
+               |> sprintf "%s/%s" instagram
+                
+    { Path = path
+      Url =  url }
+    
+let getVideoCarouselDownload (root: Post.Root) (media: Post.CarouselMedia) =
+    let url = media.VideoVersions.[0].Url
+    let path = getVideoCarouselPath root.User media
+               |> sprintf "%s/%s" instagram
+                
+    { Path = path
+      Url =  url }
+    
+let getCarouselDownload (root: Post.Root) (media: Post.CarouselMedia) =
+    let mediaType = media.MediaType
+    
+    match mediaType with
+    | 1 -> getImageCarouselDownload root media
+    | 2 -> getVideoCarouselDownload root media
+    
+let getCarouselDownloads (root: Post.Root) =
+    root.Post.CarouselMedia
+    |> Array.toSeq
+    |> Seq.map(getCarouselDownload(root))
+
+let getDownloadPost (root: Post.Root) =
+    let mediaType = root.Post.MediaType
+    
+    match mediaType with
+    | 1 -> seq { getImageDownload root }
+    | 2 -> seq { getVideoDownload root }
+    | _ -> getCarouselDownloads root
