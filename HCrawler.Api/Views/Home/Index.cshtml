@@ -17,8 +17,11 @@
             </a>
             @if (@Model.Name is object)
             {
-                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="@Model.Results.FirstOrDefault()?.DetailedProfile.Url">
+                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="/?name=@Model.Results.FirstOrDefault()?.DetailedProfile.Name">
                     @Model.Name
+                </a>
+                <a target="_blank" rel="noopener noreferrer" class="has-text-weight-light navbar-item is-uppercase is-family-monospace" href="@Model.Results.FirstOrDefault()?.DetailedProfile.Url">
+                    Instagram
                 </a>
             }
             @if (Model.Previous is object)
