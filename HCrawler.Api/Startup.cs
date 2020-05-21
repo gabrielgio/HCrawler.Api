@@ -27,9 +27,13 @@ namespace HCrawler.Api
         {
             services.AddControllers();
             services.AddControllersWithViews();
+            services.AddHttpClient();
 
             services.AddScoped<Image.Image>();
             services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IDownloader, Downloader>();
+            
+            services.AddHostedService<ConsumeRabbitMQHostedService>();  
 
             services.AddScoped<IDbConnection>(t =>
             {
