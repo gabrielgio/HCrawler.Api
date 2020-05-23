@@ -20,7 +20,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="ProviderData\merged.json" />
+      <Compile Include="Reddit.fs" />
+      <Content Include="ProviderData\instagram.json" />
     </ItemGroup>
 
 </Project>

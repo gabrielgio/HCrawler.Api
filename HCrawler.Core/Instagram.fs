@@ -4,7 +4,7 @@ open FSharp.Data
 open Payloads
 open System
 
-type Post = JsonProvider<"ProviderData/merged.json">
+type Post = JsonProvider<"ProviderData/instagram.json">
 
 let instagram = "instagram"
 let instagramUrl = "https://www.instagram.com"
