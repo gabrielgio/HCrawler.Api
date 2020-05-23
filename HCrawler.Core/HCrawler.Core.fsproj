@@ -22,6 +22,7 @@
     <ItemGroup>
       <Compile Include="Reddit.fs" />
       <Content Include="ProviderData\instagram.json" />
+      <Content Include="ProviderData\reddit.json" />
     </ItemGroup>
 
 </Project>

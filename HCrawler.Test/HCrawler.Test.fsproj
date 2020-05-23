@@ -11,6 +11,7 @@
         <Compile Include="Mock.fs" />
         <Compile Include="ImageTests.fs" />
         <Compile Include="InstagramTests.fs" />
+        <Compile Include="RedditTest.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,16 +30,20 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="Data\carousel.json">
+      <Content Include="Data\Instagram\carousel.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
-      <Content Include="Data\image.json">
+      <Content Include="Data\Instagram\image.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="Data\video.json">
+      <Content Include="Data\Instagram\video.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Data\Reddit\redd_jpeg.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="ProviderData\instagram.json" />
+      <Content Include="ProviderData\reddit.json" />
     </ItemGroup>
 
 </Project>

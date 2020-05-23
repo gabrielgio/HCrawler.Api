@@ -8,7 +8,7 @@ open FsUnit
 open Xunit
 
 let loadPost postName =
-    let filePath = sprintf "Data/%s.json" postName
+    let filePath = sprintf "Data/Instagram/%s.json" postName
 
     filePath
     |> File.ReadAllText
