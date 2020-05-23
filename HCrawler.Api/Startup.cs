@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Reflection;
+using HCrawler.Api.Consumers;
 using HCrawler.Core;
 using HCrawler.DB.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -33,7 +34,7 @@ namespace HCrawler.Api
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IDownloader, Downloader>();
             
-            services.AddHostedService<ConsumeRabbitMQHostedService>();  
+            services.AddHostedService<InstagramHostedService>();  
 
             services.AddScoped<IDbConnection>(t =>
             {
@@ -42,7 +43,6 @@ namespace HCrawler.Api
                 return dbConnection;
             });
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
