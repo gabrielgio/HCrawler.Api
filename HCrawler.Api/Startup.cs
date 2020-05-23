@@ -35,6 +35,7 @@ namespace HCrawler.Api
             services.AddScoped<IDownloader, Downloader>();
             
             services.AddHostedService<InstagramHostedService>();  
+            services.AddHostedService<RedditHostedService>();  
 
             services.AddScoped<IDbConnection>(t =>
             {
