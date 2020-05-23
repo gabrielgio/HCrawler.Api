@@ -21,7 +21,7 @@
                     @Model.Name
                 </a>
                 <a target="_blank" rel="noopener noreferrer" class="has-text-weight-light navbar-item is-uppercase is-family-monospace" href="@Model.Results.FirstOrDefault()?.DetailedProfile.Url">
-                    Instagram
+                    @Model.Results.FirstOrDefault()?.DetailedProfile.DetailedSource.Name
                 </a>
             }
             @if (Model.Previous is object)
