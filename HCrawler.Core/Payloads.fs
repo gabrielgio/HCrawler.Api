@@ -29,6 +29,7 @@ type StoreImage =
 type PageFilter =
     { Size: int
       Checkpoint: Nullable<DateTime>
+      Source: string
       Name: string }
 
 type Download =

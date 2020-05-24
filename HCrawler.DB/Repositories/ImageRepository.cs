@@ -18,11 +18,21 @@ namespace HCrawler.DB.Repositories
             _connection = connection;
         }
 
-        private string PushFilter(string name)
+        private string PushNameFilter(string name)
         {
             if (name is object)
             {
                 return $@"AND P.""Name"" = '{name}'";
+            }
+
+            return string.Empty;
+        }
+
+        private string PushSourceFilter(string source)
+        {
+            if (source is object)
+            {
+                return $@"AND S.""Name"" = '{source}'";
             }
 
             return string.Empty;
@@ -45,7 +55,8 @@ namespace HCrawler.DB.Repositories
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
             INNER JOIN ""Sources"" S on P.""SourceId"" = S.""Id""
             WHERE I.""CreatedOn"" < @checkpoint
-            {PushFilter(pageFilter.Name)}
+            {PushNameFilter(pageFilter.Name)}
+            {PushSourceFilter(pageFilter.Source)}
             ORDER BY I.""CreatedOn"" DESC
             LIMIT @size
             ";
