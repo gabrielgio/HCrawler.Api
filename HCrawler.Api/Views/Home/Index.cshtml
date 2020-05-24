@@ -20,8 +20,14 @@
                 <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="/?name=@Model.Results.FirstOrDefault()?.DetailedProfile.Name">
                     @Model.Name
                 </a>
-                <a target="_blank" rel="noopener noreferrer" class="has-text-weight-light navbar-item is-uppercase is-family-monospace" href="@Model.Results.FirstOrDefault()?.DetailedProfile.Url">
-                    @Model.Results.FirstOrDefault()?.DetailedProfile.DetailedSource.Name
+            }
+            else
+            {
+                <a class="navbar-item is-uppercase is-family-monospace" href="/?source=reddit">
+                    Reddit
+                </a>
+                <a class="navbar-item is-uppercase is-family-monospace" href="/?source=instagram">
+                    Instagram
                 </a>
             }
             @if (Model.Previous is object)
@@ -30,7 +36,7 @@
                     &lt
                 </a>
             }
-            <a class="navbar-item is-family-monospace" href="/?checkpoint=@Model.Next@(Model.Name is object ? $"&name={Model.Name}" : "")">
+            <a class="navbar-item is-family-monospace" href="@Model.GetNextLink()">
                 >
             </a>
         </div>
@@ -41,7 +47,7 @@
             @if (image.Path.Contains("mp4"))
             {
                 <video muted loop controls="controls" preload="metadata">
-                    <source src="@image.DetailedProfile.DetailedSource.Name/@image.Path#t=0.5" type="video/mp4">
+                    <source src="@image.DetailedProfile.DetailedSource.Name/@image.Path" type="video/mp4">
                 </video>
             }
             else

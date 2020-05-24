@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using HCrawler.Api.Consumers;
 using HCrawler.Core;
@@ -33,9 +34,12 @@ namespace HCrawler.Api
             services.AddScoped<Image.Image>();
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IDownloader, Downloader>();
-            
-            services.AddHostedService<InstagramHostedService>();  
-            services.AddHostedService<RedditHostedService>();  
+
+            if (_configuration.GetChildren().Any(item => item.Key == "rabbit"))
+            {
+                services.AddHostedService<InstagramHostedService>();
+                services.AddHostedService<RedditHostedService>();
+            }
 
             services.AddScoped<IDbConnection>(t =>
             {
