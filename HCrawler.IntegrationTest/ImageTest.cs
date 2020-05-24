@@ -69,7 +69,7 @@ namespace HCrawler.IntegrationTest
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var json = await response.Content.ReadAsStringAsync();
-            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.DetailedImage>>(json).ToList();
+            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.Image>>(json).ToList();
             var image = images.First();
 
             Assert.True(3 == images.Count);
@@ -86,12 +86,13 @@ namespace HCrawler.IntegrationTest
         [Fact]
         public async Task GetAsyncWithParam()
         {
-            var route = $"/images?name={_createImage.ProfileName}";
+            var profileId = await GetService<IImageRepository>().getProfileIdByNameAsync(_createImage.ProfileName);
+            var route = $"/images?profile={profileId}";
             var response = await Client.GetAsync(route);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var json = await response.Content.ReadAsStringAsync();
-            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.DetailedImage>>(json).ToList();
+            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.Image>>(json).ToList();
             var image = images.First();
 
             Assert.True(2 == images.Count);
@@ -107,12 +108,12 @@ namespace HCrawler.IntegrationTest
         [Fact]
         public async Task GetAsyncWithParam_Empty()
         {
-            const string route = "/images?name=skjdskdskja";
+            const string route = "/images?profile=-1";
             var response = await Client.GetAsync(route);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var json = await response.Content.ReadAsStringAsync();
-            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.DetailedImage>>(json).ToList();
+            var images = JsonConvert.DeserializeObject<IEnumerable<Proxies.Image>>(json).ToList();
 
             Assert.True(0 == images.Count);
         }

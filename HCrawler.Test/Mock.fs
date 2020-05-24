@@ -13,7 +13,7 @@ let mockImage =
 let spawn (source:Mock<IImageRepository>) =
     source.Object
 
-let mockGetAllAsync pageFilter (result:IEnumerable<DetailedImage>) (source:Mock<IImageRepository>) =
+let mockGetAllAsync pageFilter (result:IEnumerable<Image>) (source:Mock<IImageRepository>) =
    source
        .Setup(fun x -> x.getAllAsync(pageFilter))
        .ReturnsAsync(result)

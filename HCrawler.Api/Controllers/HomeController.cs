@@ -18,8 +18,7 @@ namespace HCrawler.Api.Controllers
         public async Task<IActionResult> Index([FromQuery] PageFilter pageFilter)
         {
             var images = await _image.getAllAsync(pageFilter.ToRecord());
-            var page = new Page<Proxies.DetailedImage>(images, pageFilter.Checkpoint, images.LastOrDefault()?.CreatedOn,
-                pageFilter.Name, pageFilter.Source);
+            var page = new Page(images, pageFilter.Checkpoint,pageFilter.Profile, pageFilter.Source);
             return View(page);
         }
     }

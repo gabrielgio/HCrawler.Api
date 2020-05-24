@@ -1,4 +1,5 @@
-@model HCrawler.Api.ViewModels.Page<HCrawler.Core.Proxies.DetailedImage>
+@using Microsoft.AspNetCore.Mvc.Formatters
+@model HCrawler.Api.ViewModels.Page
 
 <!DOCTYPE html>
 <html>
@@ -15,18 +16,19 @@
             <a class="navbar-item has-text-weight-bold is-uppercase  is-family-monospace" href="/">
                 Imager
             </a>
-            @if (@Model.Name is object)
+            @if (@Model.Profile is object)
             {
-                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="/?name=@Model.Results.FirstOrDefault()?.DetailedProfile.Name">
-                    @Model.Name
+                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="@Model.GetProfileLink()">
+                    @Model.Results.FirstOrDefault()?.DetailedProfile.Name
                 </a>
             }
             else
             {
-                <a class="navbar-item is-uppercase is-family-monospace" href="/?source=reddit">
+                // TODO: Remove hardcoded source
+                <a class="navbar-item is-uppercase is-family-monospace" href="/?source=3">
                     Reddit
                 </a>
-                <a class="navbar-item is-uppercase is-family-monospace" href="/?source=instagram">
+                <a class="navbar-item is-uppercase is-family-monospace" href="/?source=1">
                     Instagram
                 </a>
             }
@@ -56,9 +58,9 @@
                     <img src="@image.DetailedProfile.DetailedSource.Name/@image.Path"/>
                 </figure>
             }
-            @if (Model.Name == null)
+            @if (Model.Profile == null)
             {
-                <a href="/?name=@image.DetailedProfile.Name">
+                <a href="/?profile=@image.DetailedProfile.Id">
                     <span class="is-family-monospace is-size-7 has-text-black">
                         @image.DetailedProfile.Name/<a target="_blank" rel="noopener noreferrer" class="is-family-monospace is-size-7 has-text-black" href="@image.Url">@image.DetailedProfile.DetailedSource.Name</a>
                     </span>

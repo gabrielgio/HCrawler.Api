@@ -2,19 +2,21 @@ module HCrawler.Core.Proxies
 
 open System
 
-type DetailedSource =
-    { Name: string
+type Source =
+    { Id: int
+      Name: string
       Url: string }
     
-type DetailedProfile =
-    { Name: string
+type Profile =
+    { Id: int
+      Name: string
       Url: string
-      DetailedSource: DetailedSource }
+      DetailedSource: Source }
     
-type DetailedImage =
+type Image =
     { Id: int
       Path: string
       CreatedOn: DateTime
       Url: string
-      DetailedProfile: DetailedProfile }
+      DetailedProfile: Profile }
     

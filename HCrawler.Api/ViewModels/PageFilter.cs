@@ -12,13 +12,14 @@ namespace HCrawler.Api.ViewModels
 
         public int Size { get; set; }
         public DateTime? Checkpoint { get; set; }
-        public string Name { get; set; }
+        
+        public int? Profile { get; set; }
 
-        public string Source { get; set; }
+        public int? Source { get; set; }
 
         public HCrawler.Core.Payloads.PageFilter ToRecord()
         {
-            return new Payloads.PageFilter(Size, Checkpoint, Source, Name);
+            return new Payloads.PageFilter(Size, Checkpoint, Source, Profile);
         }
     }
 }

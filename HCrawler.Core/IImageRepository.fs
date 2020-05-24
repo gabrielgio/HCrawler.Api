@@ -6,7 +6,7 @@ open HCrawler.Core.Payloads
 open HCrawler.Core.Proxies
 
 type IImageRepository =
-    abstract getAllAsync: PageFilter -> Task<IEnumerable<DetailedImage>>
+    abstract getAllAsync: PageFilter -> Task<IEnumerable<Image>>
     abstract profileExistsAsync: string -> Task<bool>
     abstract sourceExistsAsync: string -> Task<bool>
     abstract imageExistsAsync: string -> Task<bool>

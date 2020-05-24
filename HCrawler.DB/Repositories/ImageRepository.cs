@@ -18,35 +18,37 @@ namespace HCrawler.DB.Repositories
             _connection = connection;
         }
 
-        private string PushNameFilter(string name)
+        private string PushNameFilter(int? name)
         {
             if (name is object)
             {
-                return $@"AND P.""Name"" = '{name}'";
+                return $@"AND P.""Id"" = '{name.ToString()}'";
             }
 
             return string.Empty;
         }
 
-        private string PushSourceFilter(string source)
+        private string PushSourceFilter(int? source)
         {
             if (source is object)
             {
-                return $@"AND S.""Name"" = '{source}'";
+                return $@"AND S.""Id"" = '{source.ToString()}'";
             }
 
             return string.Empty;
         }
 
-        public async Task<IEnumerable<Proxies.DetailedImage>> getAllAsync(Payloads.PageFilter pageFilter)
+        public async Task<IEnumerable<Proxies.Image>> getAllAsync(Payloads.PageFilter pageFilter)
         {
             var checkpoint = pageFilter.Checkpoint ?? DateTime.MaxValue;
 
             var sql = $@"
             SELECT I.""Id"" ImageId,
                    I.""Path"" ImagePath,
+                   P.""Id"" ProfileId,
                    P.""Name"" ProfileName,
                    P.""Url"" ProfileUrl,
+                   S.""Id"" SourceId,
                    S.""Name"" SourceName,
                    S.""Url"" SourceUrl,
                    I.""CreatedOn"" ImageCreatedOn,
@@ -55,7 +57,7 @@ namespace HCrawler.DB.Repositories
             INNER JOIN ""Profiles"" P on I.""ProfileId"" = P.""Id""
             INNER JOIN ""Sources"" S on P.""SourceId"" = S.""Id""
             WHERE I.""CreatedOn"" < @checkpoint
-            {PushNameFilter(pageFilter.Name)}
+            {PushNameFilter(pageFilter.Profile)}
             {PushSourceFilter(pageFilter.Source)}
             ORDER BY I.""CreatedOn"" DESC
             LIMIT @size

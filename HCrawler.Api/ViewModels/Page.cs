@@ -3,48 +3,54 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
+using HCrawler.Core;
 using Microsoft.AspNetCore.WebUtilities;
 
 namespace HCrawler.Api.ViewModels
 {
-    public class Page<T>
+    public class Page
     {
-        public Page(IEnumerable<T> results, DateTime? previous, DateTime? next, string name, string source)
+        private const string _url = "/";
+
+        public Page(IEnumerable<Proxies.Image> results, DateTime? previous, int? profile, int? source)
         {
             Results = results;
             Previous = previous;
-            Next = next;
-            Name = name;
+            Profile = profile;
             Source = source;
         }
 
-        public DateTime? Next { get; set; }
+        public DateTime? Previous { get; }
 
-        public DateTime? Previous { get; set; }
+        public int? Profile { get; }
 
-        public string Name { get; set; }
+        public int? Source { get; }
 
+        public IEnumerable<Proxies.Image> Results { get; }
 
-        public string Source { get; set; }
+        public string GetProfileLink()
+        {
+            var param = new Dictionary<string, string>();
 
-        public IEnumerable<T> Results { get; set; }
+            param.Add("profile", Results.FirstOrDefault()?.DetailedProfile.Id.ToString() ?? "");
+            
+            return QueryHelpers.AddQueryString(_url, param);
+        }
 
         public string GetNextLink()
         {
-           const string url = "/";
-           var param = new Dictionary<string, string>();
-           
-           param.Add("checkpoint", Next.ToString());
-           
-           if (Name is object)
-              param.Add("name", Name); 
-           
-           if (Source is object)
-               param.Add("source", Source);
-           
-           return QueryHelpers.AddQueryString(url, param);
-        }
-        
+            var param = new Dictionary<string, string>();
+            var next = Results.LastOrDefault()?.CreatedOn;
 
+            param.Add("checkpoint", next.ToString());
+
+            if (Profile is object)
+                param.Add("profile", Profile.ToString());
+
+            if (Source is object)
+                param.Add("source", Source.ToString());
+
+            return QueryHelpers.AddQueryString(_url, param);
+        }
     }
 }
