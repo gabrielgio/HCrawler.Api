@@ -29,11 +29,10 @@ namespace HCrawler.Api.Consumers
                     var image = scope.ServiceProvider.GetRequiredService<Image.Image>();
                     var downloader = scope.ServiceProvider.GetRequiredService<IDownloader>();
 
-
                     var createImage = Reddit.getPayload(post);
-                    await image.createImageIfNotExistsAsync(createImage);
-
                     var download = Reddit.getDownloadPost(post);
+                    
+                    await image.createImageIfNotExistsAsync(createImage);
                     await downloader.download(download);
                 }
             }
