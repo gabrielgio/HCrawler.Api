@@ -18,7 +18,7 @@
             </a>
             @if (@Model.Profile is object)
             {
-                <a target="_blank" rel="noopener noreferrer" class="navbar-item is-uppercase is-family-monospace" href="@Model.GetProfileLink()">
+                <a class="navbar-item is-uppercase is-family-monospace" href="@Model.GetProfileLink()">
                     @Model.Results.FirstOrDefault()?.DetailedProfile.Name
                 </a>
             }
