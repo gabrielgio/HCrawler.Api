@@ -48,6 +48,9 @@
       <Content Include="Data\Reddit\unknown_url.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <Content Include="Data\Reddit\imgur_jpeg.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
       <Content Include="ProviderData\instagram.json" />
       <Content Include="ProviderData\reddit.json" />
     </ItemGroup>

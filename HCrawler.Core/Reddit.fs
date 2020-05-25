@@ -10,8 +10,9 @@ type Post = JsonProvider<"ProviderData/reddit.json">
 let redditUrl = "https://old.reddit.com"
 let reddit = "reddit"
 
-let gfycatRegex = ".*gfycat.com.*"
-let reddJpegRegex = ".*i\\.redd\\.it.*\\.(jpg|jpeg)"
+let gfycatRegex = "^.*gfycat.com.*$"
+let reddJpegRegex = "^.*i\\.redd\\.it.*\\.(jpg|jpeg)$"
+let imgurJpegRegex = "^.*i\\.imgur\\.com.*\\.(jpg|jpeg)$"
 
 let parsePost post =
     Post.Parse(post)
@@ -32,10 +33,9 @@ let matchRegex input pattern =
     Regex.IsMatch(input, pattern)
 
 let isKnown (root: Post.Root) =
-    [| gfycatRegex; reddJpegRegex |]
+    [| gfycatRegex; reddJpegRegex; imgurJpegRegex |]
     |> Array.map (matchRegex (root.Url))
     |> Array.reduce (fun x y -> x || y)
-
 
 let (|Regex|_|) pattern input =
     let m = Regex.Match(input, pattern)
@@ -47,11 +47,13 @@ let getGfycatUrl (root: Post.Root) =
 let getUrl (root: Post.Root) =
     match root.Url with
     | Regex reddJpegRegex -> root.Url
+    | Regex imgurJpegRegex -> root.Url
     | Regex gfycatRegex -> getGfycatUrl root
 
 let getPath (root: Post.Root) =
     match root.Url with
     | Regex reddJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
+    | Regex imgurJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
     | Regex gfycatRegex -> sprintf "%s/%s.mp4" root.Subreddit.DisplayName root.Id
 
 
