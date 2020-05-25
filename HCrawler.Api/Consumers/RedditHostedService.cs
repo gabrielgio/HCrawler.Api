@@ -3,32 +3,45 @@ using System.Threading.Tasks;
 using HCrawler.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace HCrawler.Api.Consumers
 {
     public class RedditHostedService : BaseHostedService
     {
-        public RedditHostedService(IServiceProvider serviceProvider, IConfiguration configuration) : base(
-            "reddit", serviceProvider, configuration)
+        private readonly ILogger<RedditHostedService> _logger;
+
+        public RedditHostedService(IServiceProvider serviceProvider, IConfiguration configuration,
+            ILogger<RedditHostedService> logger) : base("reddit", serviceProvider, configuration)
         {
+            _logger = logger;
         }
 
         protected override async Task HandleMessage(string content)
         {
-            var post = Reddit.parsePost(content);
-
-            if (Reddit.isKnown(post))
+            try
             {
-                using var scope = ServiceProvider.CreateScope();
-                var image = scope.ServiceProvider.GetRequiredService<Image.Image>();
-                var downloader = scope.ServiceProvider.GetRequiredService<IDownloader>();
+                var post = Reddit.parsePost(content);
+
+                if (Reddit.isKnown(post))
+                {
+                    using var scope = ServiceProvider.CreateScope();
+                    var image = scope.ServiceProvider.GetRequiredService<Image.Image>();
+                    var downloader = scope.ServiceProvider.GetRequiredService<IDownloader>();
 
 
-                var createImage = Reddit.getPayload(post);
-                await image.createImageIfNotExistsAsync(createImage);
+                    var createImage = Reddit.getPayload(post);
+                    await image.createImageIfNotExistsAsync(createImage);
 
-                var download = Reddit.getDownloadPost(post);
-                await downloader.download(download);
+                    var download = Reddit.getDownloadPost(post);
+                    await downloader.download(download);
+                }
+            }
+            catch (Exception e)
+            {
+                //TODO: REMOVE THIS IN THE FUTURE
+                //I'll leave this for now to get which payloads are throwing errors
+                _logger.LogError(e, content);
             }
         }
     }
