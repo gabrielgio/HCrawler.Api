@@ -6,66 +6,94 @@
       "py/id": 1
     },
     "_fetched": false,
-    "display_name": "kpics",
-    "_path": "r/kpics/"
+    "display_name": "kpopfap",
+    "_path": "r/kpopfap/"
   },
   "selftext": "",
-  "author_fullname": "t2_ffyrvxg",
+  "author_fullname": "t2_5tz5k5t2",
   "saved": true,
   "mod_reason_title": null,
   "gilded": 0,
   "clicked": false,
-  "title": "Xuanyi",
+  "title": "Twice - Jihyo",
   "link_flair_richtext": [],
-  "subreddit_name_prefixed": "r/kpics",
+  "subreddit_name_prefixed": "r/kpopfap",
   "hidden": false,
-  "pwls": 0,
-  "link_flair_css_class": "misc",
+  "pwls": 3,
+  "link_flair_css_class": null,
   "downs": 0,
   "thumbnail_height": 140,
   "hide_score": false,
-  "name": "t3_fxogjy",
+  "name": "t3_gqcord",
   "quarantine": false,
   "link_flair_text_color": "dark",
-  "upvote_ratio": 0.95,
+  "upvote_ratio": 0.93,
   "author_flair_background_color": null,
   "subreddit_type": "public",
-  "ups": 67,
+  "ups": 230,
   "total_awards_received": 0,
-  "media_embed": {},
+  "media_embed": {
+    "content": "<iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fgfycat.com%2Fifr%2Fpresentdangerousdromedary&display_name=Gfycat&url=https%3A%2F%2Fgfycat.com%2Fpresentdangerousdromedary&image=https%3A%2F%2Fthumbs.gfycat.com%2FPresentDangerousDromedary-size_restricted.gif&key=ed8fa8699ce04833838e66ce79ba05f1&type=text%2Fhtml&schema=gfycat\" width=\"600\" height=\"810\" scrolling=\"no\" title=\"Gfycat embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>",
+    "width": 600,
+    "scrolling": false,
+    "height": 810
+  },
   "thumbnail_width": 140,
   "author_flair_template_id": null,
   "is_original_content": false,
   "user_reports": [],
-  "secure_media": null,
-  "is_reddit_media_domain": true,
+  "secure_media": {
+    "type": "gfycat.com",
+    "oembed": {
+      "provider_url": "https://gfycat.com",
+      "description": "Watch and share Jihyo 1 GIFs by ShineAsNine on Gfycat",
+      "title": "Jihyo 1",
+      "type": "video",
+      "author_name": "Gfycat",
+      "height": 810,
+      "width": 600,
+      "html": "<iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fgfycat.com%2Fifr%2Fpresentdangerousdromedary&display_name=Gfycat&url=https%3A%2F%2Fgfycat.com%2Fpresentdangerousdromedary&image=https%3A%2F%2Fthumbs.gfycat.com%2FPresentDangerousDromedary-size_restricted.gif&key=ed8fa8699ce04833838e66ce79ba05f1&type=text%2Fhtml&schema=gfycat\" width=\"600\" height=\"810\" scrolling=\"no\" title=\"Gfycat embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>",
+      "thumbnail_width": 250,
+      "version": "1.0",
+      "provider_name": "Gfycat",
+      "thumbnail_url": "https://thumbs.gfycat.com/PresentDangerousDromedary-size_restricted.gif",
+      "thumbnail_height": 337
+    }
+  },
+  "is_reddit_media_domain": false,
   "is_meta": false,
   "category": null,
-  "secure_media_embed": {},
-  "link_flair_text": "WJSN",
+  "secure_media_embed": {
+    "content": "<iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fgfycat.com%2Fifr%2Fpresentdangerousdromedary&display_name=Gfycat&url=https%3A%2F%2Fgfycat.com%2Fpresentdangerousdromedary&image=https%3A%2F%2Fthumbs.gfycat.com%2FPresentDangerousDromedary-size_restricted.gif&key=ed8fa8699ce04833838e66ce79ba05f1&type=text%2Fhtml&schema=gfycat\" width=\"600\" height=\"810\" scrolling=\"no\" title=\"Gfycat embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>",
+    "width": 600,
+    "scrolling": false,
+    "media_domain_url": "https://www.redditmedia.com/mediaembed/gqcord",
+    "height": 810
+  },
+  "link_flair_text": null,
   "can_mod_post": false,
-  "score": 67,
+  "score": 230,
   "approved_by": null,
   "author_premium": false,
-  "thumbnail": "https://a.thumbs.redditmedia.com/yYPOYAo1C3haaSlCpo-3faU4S_Zjj_ITx0J7fUhAQm8.jpg",
+  "thumbnail": "nsfw",
   "edited": false,
   "author_flair_css_class": null,
   "author_flair_richtext": [],
   "gildings": {},
-  "post_hint": "image",
+  "post_hint": "rich:video",
   "content_categories": null,
   "is_self": false,
   "mod_note": null,
-  "created": 1586448356.0,
+  "created": 1590448429.0,
   "link_flair_type": "text",
-  "wls": 0,
+  "wls": 3,
   "removed_by_category": null,
   "banned_by": null,
   "author_flair_type": "text",
-  "domain": "i.redd.it",
+  "domain": "gfycat.com",
   "allow_live_comments": false,
   "selftext_html": null,
-  "likes": true,
+  "likes": null,
   "suggested_sort": null,
   "banned_at_utc": null,
   "view_count": null,
@@ -73,57 +101,86 @@
   "no_follow": false,
   "is_crosspostable": true,
   "pinned": false,
-  "over_18": false,
+  "over_18": true,
   "preview": {
     "images": [
       {
         "source": {
-          "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?auto=webp&s=a275f93e60175cbbb746a2b42969376edb0a4be0",
-          "width": 1452,
-          "height": 2048
+          "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?auto=webp&s=dcc6f7ebfd9172d137628369cce66dd001cd58fc",
+          "width": 250,
+          "height": 337
         },
         "resolutions": [
           {
-            "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?width=108&crop=smart&auto=webp&s=54615f68083e037ecaeea85da9c06fa7a9b9f8f3",
+            "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?width=108&crop=smart&auto=webp&s=ece06900e6e52da2bd21e0039813bb79ce7bccf5",
             "width": 108,
-            "height": 152
+            "height": 145
           },
           {
-            "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?width=216&crop=smart&auto=webp&s=4b24d28e295e963dda52d9374090f94c3caaf670",
+            "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?width=216&crop=smart&auto=webp&s=9173c8ad40da428c6e3b0891e4b225d73cdf68b7",
             "width": 216,
-            "height": 304
-          },
-          {
-            "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?width=320&crop=smart&auto=webp&s=a6880695f840e799fa35fe520fc8253b4b179a24",
-            "width": 320,
-            "height": 451
-          },
-          {
-            "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?width=640&crop=smart&auto=webp&s=c729cf0a41179a850cbf13b1b0b810a205ebb33d",
-            "width": 640,
-            "height": 902
-          },
-          {
-            "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?width=960&crop=smart&auto=webp&s=eff60a7ed8ac95e6ef06f69ff0b7701c34f33336",
-            "width": 960,
-            "height": 1354
-          },
-          {
-            "url": "https://preview.redd.it/pjj1ll1b2rr41.jpg?width=1080&crop=smart&auto=webp&s=9b5a61dd84227da55cf173fe242530e7f86c7780",
-            "width": 1080,
-            "height": 1523
+            "height": 291
           }
         ],
-        "variants": {},
-        "id": "7ea0uDnXuPIn-wyCvSb6D40rvl6FHs7-J4aRRgf6TSA"
+        "variants": {
+          "obfuscated": {
+            "source": {
+              "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?blur=40&format=pjpg&auto=webp&s=1a1f5bd8832ad4f879b429dc04d9cfaf29751b4e",
+              "width": 250,
+              "height": 337
+            },
+            "resolutions": [
+              {
+                "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?width=108&crop=smart&blur=10&format=pjpg&auto=webp&s=a02e62e7d9a0a0448386b72cd3ad08bb023357c7",
+                "width": 108,
+                "height": 145
+              },
+              {
+                "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?width=216&crop=smart&blur=21&format=pjpg&auto=webp&s=97c174ac286f7583e69478ac7c840939fd6fd9d2",
+                "width": 216,
+                "height": 291
+              }
+            ]
+          },
+          "nsfw": {
+            "source": {
+              "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?blur=40&format=pjpg&auto=webp&s=1a1f5bd8832ad4f879b429dc04d9cfaf29751b4e",
+              "width": 250,
+              "height": 337
+            },
+            "resolutions": [
+              {
+                "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?width=108&crop=smart&blur=10&format=pjpg&auto=webp&s=a02e62e7d9a0a0448386b72cd3ad08bb023357c7",
+                "width": 108,
+                "height": 145
+              },
+              {
+                "url": "https://external-preview.redd.it/eS0NNny0OH2hg_pc1S7LQY9zr1jUx3UPovqOz-zz8MQ.jpg?width=216&crop=smart&blur=21&format=pjpg&auto=webp&s=97c174ac286f7583e69478ac7c840939fd6fd9d2",
+                "width": 216,
+                "height": 291
+              }
+            ]
+          }
+        },
+        "id": "GhSoWA7W62kv4_MdAHx0w7ZR1OpsRCWpPIuTZ5Hp-8c"
       }
     ],
-    "enabled": true
+    "reddit_video_preview": {
+      "fallback_url": "https://v.redd.it/l61r4nnlgx051/DASH_720",
+      "height": 720,
+      "width": 534,
+      "scrubber_media_url": "https://v.redd.it/l61r4nnlgx051/DASH_96",
+      "dash_url": "https://v.redd.it/l61r4nnlgx051/DASHPlaylist.mpd",
+      "duration": 9,
+      "hls_url": "https://v.redd.it/l61r4nnlgx051/HLSPlaylist.m3u8",
+      "is_gif": true,
+      "transcoding_status": "completed"
+    },
+    "enabled": false
   },
   "all_awardings": [],
   "awarders": [],
   "media_only": false,
-  "link_flair_template_id": "73757e82-22e7-11e7-bb1f-0ef19ded0d94",
   "can_gild": true,
   "spoiler": false,
   "locked": false,
@@ -133,11 +190,11 @@
   "removed_by": null,
   "num_reports": null,
   "distinguished": null,
-  "subreddit_id": "t5_2u4ls",
+  "subreddit_id": "t5_2ysyr",
   "mod_reason_by": null,
   "removal_reason": null,
   "link_flair_background_color": "",
-  "id": "fxogjy",
+  "id": "gqcord",
   "is_robot_indexable": true,
   "report_reasons": null,
   "author": {
@@ -147,24 +204,41 @@
     },
     "_fetched": false,
     "_listing_use_sort": true,
-    "name": "momo_fever"
+    "name": "ShineAsNine"
   },
   "discussion_type": null,
-  "num_comments": 0,
+  "num_comments": 11,
   "send_replies": true,
-  "whitelist_status": "no_ads",
+  "whitelist_status": "promo_adult_nsfw",
   "contest_mode": false,
   "mod_reports": [],
   "author_patreon_flair": false,
   "author_flair_text_color": null,
-  "permalink": "/r/kpics/comments/fxogjy/xuanyi/",
-  "parent_whitelist_status": "no_ads",
+  "permalink": "/r/kpopfap/comments/gqcord/twice_jihyo/",
+  "parent_whitelist_status": "promo_adult_nsfw",
   "stickied": false,
-  "url": "https://i.redd.it/pjj1ll1b2rr41.jpg",
-  "subreddit_subscribers": 46821,
-  "created_utc": 1586419556.0,
+  "url": "https://gfycat.com/presentdangerousdromedary",
+  "subreddit_subscribers": 165116,
+  "created_utc": 1590419629.0,
   "num_crossposts": 0,
-  "media": null,
+  "media": {
+    "type": "gfycat.com",
+    "oembed": {
+      "provider_url": "https://gfycat.com",
+      "description": "Watch and share Jihyo 1 GIFs by ShineAsNine on Gfycat",
+      "title": "Jihyo 1",
+      "type": "video",
+      "author_name": "Gfycat",
+      "height": 810,
+      "width": 600,
+      "html": "<iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fgfycat.com%2Fifr%2Fpresentdangerousdromedary&display_name=Gfycat&url=https%3A%2F%2Fgfycat.com%2Fpresentdangerousdromedary&image=https%3A%2F%2Fthumbs.gfycat.com%2FPresentDangerousDromedary-size_restricted.gif&key=ed8fa8699ce04833838e66ce79ba05f1&type=text%2Fhtml&schema=gfycat\" width=\"600\" height=\"810\" scrolling=\"no\" title=\"Gfycat embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>",
+      "thumbnail_width": 250,
+      "version": "1.0",
+      "provider_name": "Gfycat",
+      "thumbnail_url": "https://thumbs.gfycat.com/PresentDangerousDromedary-size_restricted.gif",
+      "thumbnail_height": 337
+    }
+  },
   "is_video": false,
   "_fetched": false,
   "comment_limit": 2048,
