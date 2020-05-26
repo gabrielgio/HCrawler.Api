@@ -30,7 +30,7 @@ namespace HCrawler.Api.Consumers
             var downloadPost = Instagram.getDownloadPost(post);
             foreach (var download in downloadPost)
             {
-                await downloader.download(download);
+                await downloader.downloadHttp(download);
             }
         }
     }

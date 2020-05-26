@@ -23,18 +23,23 @@ namespace HCrawler.Api.Consumers
             {
                 var post = Reddit.parsePost(content);
 
-                if (Reddit.isKnown(post))
-                {
-                    using var scope = ServiceProvider.CreateScope();
-                    var image = scope.ServiceProvider.GetRequiredService<Image.Image>();
-                    var downloader = scope.ServiceProvider.GetRequiredService<IDownloader>();
+                var urlMethodType = Reddit.isKnown(post);
+                if (urlMethodType == Reddit.UrlMethodType.Unknown)
+                    return;
+                
+                using var scope = ServiceProvider.CreateScope();
+                var image = scope.ServiceProvider.GetRequiredService<Image.Image>();
+                var downloader = scope.ServiceProvider.GetRequiredService<IDownloader>();
 
-                    var createImage = Reddit.getPayload(post);
-                    var download = Reddit.getDownloadPost(post);
-                    
-                    await image.createImageIfNotExistsAsync(createImage);
-                    await downloader.download(download);
-                }
+                var createImage = Reddit.getPayload(post);
+                var download = Reddit.getDownloadPost(post);
+
+                await image.createImageIfNotExistsAsync(createImage);
+
+                if (urlMethodType == Reddit.UrlMethodType.Http)
+                    await downloader.downloadHttp(download);
+                else
+                    await downloader.downloadProcess(download);
             }
             catch (Exception e)
             {
