@@ -69,7 +69,7 @@ let ``Is Known`` name known =
 
 [<Theory>]
 [<InlineData("redd_jpeg", "reddit/kpics/fxogjy.jpg", "https://i.redd.it/pjj1ll1b2rr41.jpg")>]
-[<InlineData("gfycat", "reddit/kpopfap/gqcord.mp4", "https://thumbs.gfycat.com/PresentDangerousDromedary-mobile.mp4")>]
+[<InlineData("gfycat", "reddit/kpopfap/gqcord.mp4", "https://giant.gfycat.com/PresentDangerousDromedary.webm")>]
 [<InlineData("imgur_jpeg", "reddit/kpics/gq7v1p.jpg", "https://i.imgur.com/fXLMjfp.jpg")>]
 let ``Get Download Post`` name path url =
     let post = loadPost name

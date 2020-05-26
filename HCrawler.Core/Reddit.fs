@@ -42,7 +42,7 @@ let (|Regex|_|) pattern input =
     if m.Success then Some() else None
 
 let getGfycatUrl (root: Post.Root) =
-    root.Media.Oembed.ThumbnailUrl.Replace("-size_restricted.gif", "-mobile.mp4")
+    root.Media.Oembed.ThumbnailUrl.Replace("thumbs", "giant").Replace("-size_restricted.gif", ".webm")
 
 let getUrl (root: Post.Root) =
     match root.Url with

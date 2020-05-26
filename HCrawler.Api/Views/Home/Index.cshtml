@@ -46,7 +46,7 @@
     @foreach (var image in Model.Results)
     {
         <div style="padding-bottom: 10px; padding-top: 10px">
-            @if (image.Path.Contains("mp4"))
+            @if (image.Path.Contains("mp4") || image.Path.Contains("webm"))
             {
                 <video muted loop controls="controls" preload="metadata">
                     <source src="@image.DetailedProfile.DetailedSource.Name/@image.Path" type="video/mp4">
