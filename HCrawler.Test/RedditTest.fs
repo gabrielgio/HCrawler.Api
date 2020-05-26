@@ -47,7 +47,7 @@ let ``Get Full Permalink`` name (permalink: string) =
   
 [<Theory>]
 [<InlineData("redd_jpeg", "kpics/fxogjy.jpg")>]
-[<InlineData("gfycat", "kpopfap/gqcord.mp4")>]
+[<InlineData("gfycat", "kpopfap/gqcord.webm")>]
 [<InlineData("imgur_jpeg", "kpics/gq7v1p.jpg")>]
 let ``Get Path`` name (path: string) =
    let post = loadPost name
@@ -69,7 +69,7 @@ let ``Is Known`` name known =
 
 [<Theory>]
 [<InlineData("redd_jpeg", "reddit/kpics/fxogjy.jpg", "https://i.redd.it/pjj1ll1b2rr41.jpg")>]
-[<InlineData("gfycat", "reddit/kpopfap/gqcord.mp4", "https://giant.gfycat.com/PresentDangerousDromedary.webm")>]
+[<InlineData("gfycat", "reddit/kpopfap/gqcord.webm", "https://giant.gfycat.com/PresentDangerousDromedary.webm")>]
 [<InlineData("imgur_jpeg", "reddit/kpics/gq7v1p.jpg", "https://i.imgur.com/fXLMjfp.jpg")>]
 let ``Get Download Post`` name path url =
     let post = loadPost name
@@ -91,7 +91,7 @@ let ``Get Download Post`` name path url =
 )>]
 [<InlineData(
     "gfycat",
-    "kpopfap/gqcord.mp4",
+    "kpopfap/gqcord.webm",
     "https://old.reddit.com/r/kpopfap/comments/gqcord/twice_jihyo/",
     "5/25/2020 11:13:49 PM",
     "kpopfap",

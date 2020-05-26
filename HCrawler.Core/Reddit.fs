@@ -54,7 +54,7 @@ let getPath (root: Post.Root) =
     match root.Url with
     | Regex reddJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
     | Regex imgurJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
-    | Regex gfycatRegex -> sprintf "%s/%s.mp4" root.Subreddit.DisplayName root.Id
+    | Regex gfycatRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
 
 
 let getDownloadPost root =
