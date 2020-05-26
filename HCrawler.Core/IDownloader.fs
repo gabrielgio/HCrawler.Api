@@ -4,4 +4,5 @@ open System.Threading.Tasks
 open HCrawler.Core.Payloads
 
 type IDownloader =
-    abstract download: Download -> Task
+    abstract downloadHttp: Download -> Task
+    abstract downloadProcess: Download -> Task
