@@ -63,7 +63,7 @@ let ``Get Path`` name (path: string) =
 
 [<Theory>]
 [<InlineData("redd_jpeg", UrlMethodType.Http)>]
-[<InlineData("gfycat", UrlMethodType.Http)>]
+[<InlineData("gfycat", UrlMethodType.Process)>]
 [<InlineData("imgur_jpeg", UrlMethodType.Http)>]
 [<InlineData("redgifs", UrlMethodType.Process)>]
 [<InlineData("unknown_url", UrlMethodType.Unknown)>]
@@ -76,7 +76,7 @@ let ``Is Known`` name (known: UrlMethodType) =
 
 [<Theory>]
 [<InlineData("redd_jpeg", "reddit/kpics/fxogjy.jpg", "https://i.redd.it/pjj1ll1b2rr41.jpg")>]
-[<InlineData("gfycat", "reddit/kpopfap/gqcord.webm", "https://giant.gfycat.com/PresentDangerousDromedary.webm")>]
+[<InlineData("gfycat", "reddit/kpopfap/gqcord.webm", "https://gfycat.com/presentdangerousdromedary")>]
 [<InlineData("imgur_jpeg", "reddit/kpics/gq7v1p.jpg", "https://i.imgur.com/fXLMjfp.jpg")>]
 [<InlineData("redgifs", "reddit/kpopfap/gqcm6j.webm", "https://redgifs.com/watch/ripesnivelingfiddlercrab")>]
 let ``Get Download Post`` name path url =

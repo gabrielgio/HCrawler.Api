@@ -31,18 +31,16 @@ let getPostDateTime (root: Post.Root) =
         int64 root.Created |> DateTimeOffset.FromUnixTimeSeconds
     dateTimeOffset.DateTime
 
-
 let matchRegex input pattern =
     Regex.IsMatch(input, pattern)
     
 let isHttp url =
-    [| gfycatRegex; reddJpegRegex; imgurJpegRegex |]
+    [|  reddJpegRegex; imgurJpegRegex |]
     |> Array.map (matchRegex (url))
     |> Array.reduce (fun x y -> x || y)
     
-
 let isProcess url =
-    [| redgifsJpegRegex |]
+    [| redgifsJpegRegex; gfycatRegex |]
     |> Array.map (matchRegex (url))
     |> Array.reduce (fun x y -> x || y)
 
@@ -58,14 +56,6 @@ let (|Regex|_|) pattern input =
     let m = Regex.Match(input, pattern)
     if m.Success then Some() else None
 
-let getGfycatUrl (root: Post.Root) =
-    root.Media.Oembed.ThumbnailUrl.Replace("thumbs", "giant").Replace("-size_restricted.gif", ".webm")
-    
-let getUrl (root: Post.Root) =
-    match root.Url with
-    | Regex gfycatRegex -> getGfycatUrl root
-    | _ -> root.Url
-
 let getPath (root: Post.Root) =
     match root.Url with
     | Regex reddJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
@@ -73,10 +63,9 @@ let getPath (root: Post.Root) =
     | Regex gfycatRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
     | Regex redgifsJpegRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
 
-
 let getDownloadPost root =
     { Path = getPath root |> sprintf "%s/%s" reddit
-      Url = getUrl root }
+      Url = root.Url }
 
 let getPayload root =
     { ImagePath = getPath root
