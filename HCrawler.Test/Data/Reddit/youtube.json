@@ -1,0 +1,256 @@
+{
+  "approved_at_utc": null,
+  "subreddit": {
+    "py/object": "praw.models.reddit.subreddit.Subreddit",
+    "_reddit": {
+      "py/id": 1
+    },
+    "_fetched": false,
+    "display_name": "Documentaries",
+    "_path": "r/Documentaries/"
+  },
+  "selftext": "",
+  "author_fullname": "t2_1k7x1f6d",
+  "saved": true,
+  "mod_reason_title": null,
+  "gilded": 0,
+  "clicked": false,
+  "title": "Forbidden Tattoos: Korea and Japan's illegal tattoos (2018)",
+  "link_flair_richtext": [],
+  "subreddit_name_prefixed": "r/Documentaries",
+  "hidden": false,
+  "pwls": 6,
+  "link_flair_css_class": "one",
+  "downs": 0,
+  "thumbnail_height": 105,
+  "hide_score": false,
+  "name": "t3_gqxyzb",
+  "quarantine": false,
+  "link_flair_text_color": "dark",
+  "upvote_ratio": 0.94,
+  "author_flair_background_color": null,
+  "subreddit_type": "public",
+  "ups": 7615,
+  "total_awards_received": 1,
+  "media_embed": {
+    "content": "<iframe width=\"600\" height=\"338\" src=\"https://www.youtube.com/embed/oLkdqptmfng?feature=oembed&enablejsapi=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "width": 600,
+    "scrolling": false,
+    "height": 338
+  },
+  "thumbnail_width": 140,
+  "author_flair_template_id": null,
+  "is_original_content": false,
+  "user_reports": [],
+  "secure_media": {
+    "type": "youtube.com",
+    "oembed": {
+      "provider_url": "https://www.youtube.com/",
+      "version": "1.0",
+      "title": "Forbidden Tattoos: Korea and Japan's illegal tattoos",
+      "type": "video",
+      "thumbnail_width": 480,
+      "height": 338,
+      "width": 600,
+      "html": "<iframe width=\"600\" height=\"338\" src=\"https://www.youtube.com/embed/oLkdqptmfng?feature=oembed&enablejsapi=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+      "author_name": "MindyTan",
+      "provider_name": "YouTube",
+      "thumbnail_url": "https://i.ytimg.com/vi/oLkdqptmfng/hqdefault.jpg",
+      "thumbnail_height": 360,
+      "author_url": "https://www.youtube.com/channel/UCt5bl768POudbMfDoQPw1zg"
+    }
+  },
+  "is_reddit_media_domain": false,
+  "is_meta": false,
+  "category": null,
+  "secure_media_embed": {
+    "content": "<iframe width=\"600\" height=\"338\" src=\"https://www.youtube.com/embed/oLkdqptmfng?feature=oembed&enablejsapi=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "width": 600,
+    "scrolling": false,
+    "media_domain_url": "https://www.redditmedia.com/mediaembed/gqxyzb",
+    "height": 338
+  },
+  "link_flair_text": "Art",
+  "can_mod_post": false,
+  "score": 7615,
+  "approved_by": null,
+  "author_premium": false,
+  "thumbnail": "https://b.thumbs.redditmedia.com/BLB1aEnkRsI5mvOs5Bs_RRLysorPereXb99Rd-ULYXI.jpg",
+  "edited": false,
+  "author_flair_css_class": null,
+  "author_flair_richtext": [],
+  "gildings": {},
+  "post_hint": "rich:video",
+  "content_categories": null,
+  "is_self": false,
+  "mod_note": null,
+  "created": 1590531806.0,
+  "link_flair_type": "text",
+  "wls": 6,
+  "removed_by_category": null,
+  "banned_by": null,
+  "author_flair_type": "text",
+  "domain": "youtube.com",
+  "allow_live_comments": true,
+  "selftext_html": null,
+  "likes": null,
+  "suggested_sort": null,
+  "banned_at_utc": null,
+  "view_count": null,
+  "archived": false,
+  "no_follow": false,
+  "is_crosspostable": true,
+  "pinned": false,
+  "over_18": false,
+  "preview": {
+    "images": [
+      {
+        "source": {
+          "url": "https://external-preview.redd.it/0MhiiS8qOC7UeSzjvZcOO7MbHAAirgIkO8lMjKc2Ajk.jpg?auto=webp&s=3c72e5873565d8d5827cd9a975340427758c2e0f",
+          "width": 480,
+          "height": 360
+        },
+        "resolutions": [
+          {
+            "url": "https://external-preview.redd.it/0MhiiS8qOC7UeSzjvZcOO7MbHAAirgIkO8lMjKc2Ajk.jpg?width=108&crop=smart&auto=webp&s=660bab5832a5d260f20595d5d447cb2d93b25503",
+            "width": 108,
+            "height": 81
+          },
+          {
+            "url": "https://external-preview.redd.it/0MhiiS8qOC7UeSzjvZcOO7MbHAAirgIkO8lMjKc2Ajk.jpg?width=216&crop=smart&auto=webp&s=5b227c1be059d5a292700d03ca650ebee7f7749f",
+            "width": 216,
+            "height": 162
+          },
+          {
+            "url": "https://external-preview.redd.it/0MhiiS8qOC7UeSzjvZcOO7MbHAAirgIkO8lMjKc2Ajk.jpg?width=320&crop=smart&auto=webp&s=d3ffd080f77ca6d7c725e58d749df36f4211f8e2",
+            "width": 320,
+            "height": 240
+          }
+        ],
+        "variants": {},
+        "id": "x2ugXZR1UHYehakSPkXQ6-0UIDyz3lMzBlzHzf1UnM8"
+      }
+    ],
+    "enabled": false
+  },
+  "all_awardings": [
+    {
+      "giver_coin_reward": null,
+      "subreddit_id": null,
+      "is_new": false,
+      "days_of_drip_extension": 0,
+      "coin_price": 500,
+      "id": "award_a7a04d6a-8dd8-41bb-b906-04fa8f144014",
+      "penny_donate": null,
+      "coin_reward": 100,
+      "icon_url": "https://i.redd.it/award_images/t5_22cerq/hwnbr9l67s941_MadeMeSmile.png",
+      "days_of_premium": 0,
+      "icon_height": 2048,
+      "resized_icons": [
+        {
+          "url": "https://preview.redd.it/award_images/t5_22cerq/hwnbr9l67s941_MadeMeSmile.png?width=16&height=16&auto=webp&s=e0520b48dc29f712cfef6e86bc4606efbcd2679f",
+          "width": 16,
+          "height": 16
+        },
+        {
+          "url": "https://preview.redd.it/award_images/t5_22cerq/hwnbr9l67s941_MadeMeSmile.png?width=32&height=32&auto=webp&s=3eab35e86fbf6357f990623661260922f1a96a85",
+          "width": 32,
+          "height": 32
+        },
+        {
+          "url": "https://preview.redd.it/award_images/t5_22cerq/hwnbr9l67s941_MadeMeSmile.png?width=48&height=48&auto=webp&s=836ada1c8a8a37b0bc7ce84a6d08047ed22c50bc",
+          "width": 48,
+          "height": 48
+        },
+        {
+          "url": "https://preview.redd.it/award_images/t5_22cerq/hwnbr9l67s941_MadeMeSmile.png?width=64&height=64&auto=webp&s=60ed37049f1e02628d94bce5e7e94899be4e30c4",
+          "width": 64,
+          "height": 64
+        },
+        {
+          "url": "https://preview.redd.it/award_images/t5_22cerq/hwnbr9l67s941_MadeMeSmile.png?width=128&height=128&auto=webp&s=149a5967348a62e567ae941879d4e5004e2e7ee2",
+          "width": 128,
+          "height": 128
+        }
+      ],
+      "icon_width": 2048,
+      "start_date": null,
+      "is_enabled": true,
+      "description": "When you're smiling before you know it. Gives %{coin_symbol}100 Coins to both the author and the community.",
+      "end_date": null,
+      "subreddit_coin_reward": 100,
+      "count": 1,
+      "name": "Made Me Smile",
+      "icon_format": null,
+      "award_sub_type": "APPRECIATION",
+      "penny_price": null,
+      "award_type": "global"
+    }
+  ],
+  "awarders": [],
+  "media_only": false,
+  "link_flair_template_id": "70de4076-8866-11e6-82dc-0ec45b1c8707",
+  "can_gild": true,
+  "spoiler": false,
+  "locked": false,
+  "author_flair_text": null,
+  "treatment_tags": [],
+  "visited": false,
+  "removed_by": null,
+  "num_reports": null,
+  "distinguished": null,
+  "subreddit_id": "t5_2qhlh",
+  "mod_reason_by": null,
+  "removal_reason": null,
+  "link_flair_background_color": "",
+  "id": "gqxyzb",
+  "is_robot_indexable": true,
+  "report_reasons": null,
+  "author": {
+    "py/object": "praw.models.reddit.redditor.Redditor",
+    "_reddit": {
+      "py/id": 1
+    },
+    "_fetched": false,
+    "_listing_use_sort": true,
+    "name": "pizzBlaze"
+  },
+  "discussion_type": null,
+  "num_comments": 467,
+  "send_replies": true,
+  "whitelist_status": "all_ads",
+  "contest_mode": false,
+  "mod_reports": [],
+  "author_patreon_flair": false,
+  "author_flair_text_color": null,
+  "permalink": "/r/Documentaries/comments/gqxyzb/forbidden_tattoos_korea_and_japans_illegal/",
+  "parent_whitelist_status": "all_ads",
+  "stickied": false,
+  "url": "https://www.youtube.com/watch?v=oLkdqptmfng",
+  "subreddit_subscribers": 16191943,
+  "created_utc": 1590503006.0,
+  "num_crossposts": 2,
+  "media": {
+    "type": "youtube.com",
+    "oembed": {
+      "provider_url": "https://www.youtube.com/",
+      "version": "1.0",
+      "title": "Forbidden Tattoos: Korea and Japan's illegal tattoos",
+      "type": "video",
+      "thumbnail_width": 480,
+      "height": 338,
+      "width": 600,
+      "html": "<iframe width=\"600\" height=\"338\" src=\"https://www.youtube.com/embed/oLkdqptmfng?feature=oembed&enablejsapi=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+      "author_name": "MindyTan",
+      "provider_name": "YouTube",
+      "thumbnail_url": "https://i.ytimg.com/vi/oLkdqptmfng/hqdefault.jpg",
+      "thumbnail_height": 360,
+      "author_url": "https://www.youtube.com/channel/UCt5bl768POudbMfDoQPw1zg"
+    }
+  },
+  "is_video": false,
+  "_fetched": false,
+  "comment_limit": 2048,
+  "comment_sort": "confidence",
+  "_comments_by_id": {}
+}

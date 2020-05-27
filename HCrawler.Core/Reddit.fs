@@ -16,6 +16,7 @@ let gfycatRegex = "^.*gfycat.com.*$"
 let reddJpegRegex = "^.*i\\.redd\\.it.*\\.(jpg|jpeg)$"
 let imgurJpegRegex = "^.*i\\.imgur\\.com.*\\.(jpg|jpeg)$"
 let redgifsJpegRegex = "^.*redgifs\\.com.*$"
+let youtubeRegex = "^.*\\.youtube\\.com.*$"
 
 let parsePost post =
     Post.Parse(post)
@@ -40,7 +41,7 @@ let isHttp url =
     |> Array.reduce (fun x y -> x || y)
     
 let isProcess url =
-    [| redgifsJpegRegex; gfycatRegex |]
+    [| redgifsJpegRegex; gfycatRegex; youtubeRegex |]
     |> Array.map (matchRegex (url))
     |> Array.reduce (fun x y -> x || y)
 
@@ -62,6 +63,7 @@ let getPath (root: Post.Root) =
     | Regex imgurJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
     | Regex gfycatRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
     | Regex redgifsJpegRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
+    | Regex youtubeRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
 
 let getDownloadPost root =
     { Path = getPath root |> sprintf "%s/%s" reddit

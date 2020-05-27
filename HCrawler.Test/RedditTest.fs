@@ -21,6 +21,7 @@ let loadPost postName =
 [<InlineData("gfycat", "https://old.reddit.com/r/kpopfap/")>]
 [<InlineData("imgur_jpeg", "https://old.reddit.com/r/kpics/")>]
 [<InlineData("redgifs", "https://old.reddit.com/r/kpopfap/")>]
+[<InlineData("youtube", "https://old.reddit.com/r/Documentaries/")>]
 let ``Get Profile Url`` name (url: string) =
     let post = loadPost name
 
@@ -32,6 +33,7 @@ let ``Get Profile Url`` name (url: string) =
 [<InlineData("gfycat", "5/25/2020 11:13:49 PM")>]
 [<InlineData("imgur_jpeg", "5/25/2020 5:17:49 PM")>]
 [<InlineData("redgifs", "5/25/2020 11:10:03 PM")>]
+[<InlineData("youtube", "5/26/2020 10:23:26 PM")>]
 let ``Get Post DateTime`` name dateTime =
     let post = loadPost name
     let expectedDateTime = DateTime.Parse  dateTime
@@ -44,6 +46,7 @@ let ``Get Post DateTime`` name dateTime =
 [<InlineData("gfycat", "https://old.reddit.com/r/kpopfap/comments/gqcord/twice_jihyo/")>]
 [<InlineData("imgur_jpeg", "https://old.reddit.com/r/kpics/comments/gq7v1p/yooa/")>]
 [<InlineData("redgifs", "https://old.reddit.com/r/kpopfap/comments/gqcm6j/jo_jung_min_maxim_korea/")>]
+[<InlineData("youtube", "https://old.reddit.com/r/Documentaries/comments/gqxyzb/forbidden_tattoos_korea_and_japans_illegal/")>]
 let ``Get Full Permalink`` name (permalink: string) =
     let post = loadPost name
 
@@ -55,6 +58,7 @@ let ``Get Full Permalink`` name (permalink: string) =
 [<InlineData("gfycat", "kpopfap/gqcord.webm")>]
 [<InlineData("imgur_jpeg", "kpics/gq7v1p.jpg")>]
 [<InlineData("redgifs", "kpopfap/gqcm6j.webm")>]
+[<InlineData("youtube", "Documentaries/gqxyzb.webm")>]
 let ``Get Path`` name (path: string) =
    let post = loadPost name
    
@@ -66,6 +70,7 @@ let ``Get Path`` name (path: string) =
 [<InlineData("gfycat", UrlMethodType.Process)>]
 [<InlineData("imgur_jpeg", UrlMethodType.Http)>]
 [<InlineData("redgifs", UrlMethodType.Process)>]
+[<InlineData("youtube", UrlMethodType.Process)>]
 [<InlineData("unknown_url", UrlMethodType.Unknown)>]
 let ``Is Known`` name (known: UrlMethodType) =
     let post = loadPost name
@@ -79,6 +84,7 @@ let ``Is Known`` name (known: UrlMethodType) =
 [<InlineData("gfycat", "reddit/kpopfap/gqcord.webm", "https://gfycat.com/presentdangerousdromedary")>]
 [<InlineData("imgur_jpeg", "reddit/kpics/gq7v1p.jpg", "https://i.imgur.com/fXLMjfp.jpg")>]
 [<InlineData("redgifs", "reddit/kpopfap/gqcm6j.webm", "https://redgifs.com/watch/ripesnivelingfiddlercrab")>]
+[<InlineData("youtube", "reddit/Documentaries/gqxyzb.webm", "https://www.youtube.com/watch?v=oLkdqptmfng")>]
 let ``Get Download Post`` name path url =
     let post = loadPost name
     let expectedDownload =
@@ -113,7 +119,14 @@ let ``Get Download Post`` name path url =
     "kpics",
     "https://old.reddit.com/r/kpics/"
 )>]
-
+[<InlineData(
+    "youtube",
+    "Documentaries/gqxyzb.webm",
+    "https://old.reddit.com/r/Documentaries/comments/gqxyzb/forbidden_tattoos_korea_and_japans_illegal/",
+    "5/26/2020 10:23:26 PM",
+    "Documentaries",
+    "https://old.reddit.com/r/Documentaries/"
+)>]
 let ``Get Payload`` name imagePath imageUrl dateTime profileName profileUrl =
     let post = loadPost name
 

@@ -54,6 +54,9 @@
       <Content Include="Data\Reddit\redgifs.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <Content Include="Data\Reddit\youtube.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
       <Content Include="ProviderData\instagram.json" />
       <Content Include="ProviderData\reddit.json" />
     </ItemGroup>
