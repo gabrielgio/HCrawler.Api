@@ -35,7 +35,7 @@ namespace HCrawler.Api
         {
             if (Regex.IsMatch(url, Reddit.vredditRegex))
             {
-                return $" -f \"bestvideo+bestaudio\" --merge-output-format mp4 --output {fullPath} {url}";
+                return $" -f \"bestvideo+bestaudio/bestvideo\" --merge-output-format mp4 --output {fullPath} {url}";
             }
             if (Regex.IsMatch(url, Reddit.youtubeRegex))
             {
