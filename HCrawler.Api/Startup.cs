@@ -37,7 +37,7 @@ namespace HCrawler.Api
 
             if (_configuration.GetChildren().Any(item => item.Key == "rabbit"))
             {
-                // services.AddHostedService<InstagramHostedService>();
+                services.AddHostedService<InstagramHostedService>();
                 services.AddHostedService<RedditHostedService>();
             }
 
