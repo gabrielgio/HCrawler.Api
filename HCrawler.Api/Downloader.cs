@@ -35,11 +35,11 @@ namespace HCrawler.Api
         {
             if (Regex.IsMatch(url, Reddit.vredditRegex))
             {
-                return $" -f 'bestvideo+bestaudio' --merge-output-format mp4 --output {fullPath} {url}";
+                return $" -f \"bestvideo+bestaudio\" --merge-output-format mp4 --output {fullPath} {url}";
             }
             if (Regex.IsMatch(url, Reddit.youtubeRegex))
             {
-                return $" -f 'bestvideo[ext=webm]+bestaudio[ext=m4a]' --merge-output-format mp4 --output {fullPath} {url}";
+                return $" -f \"bestvideo[ext=webm]+bestaudio[ext=m4a]\" --merge-output-format mp4 --output {fullPath} {url}";
             }
             if (Regex.IsMatch(url, Reddit.gfycatRegex))
             {
@@ -88,8 +88,9 @@ namespace HCrawler.Api
 
                 if (process.ExitCode != 0)
                 {
+                    var errorMessage = process.StandardError.ReadToEnd();
                     process.Dispose();
-                    throw new Exception("Process failed");
+                    throw new Exception($"Process failed: {errorMessage}");
                 }
 
                 process.Dispose();
