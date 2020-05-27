@@ -61,8 +61,8 @@ let ``Get Full Permalink`` name (permalink: string) =
 [<InlineData("gfycat", "kpopfap/gqcord.webm")>]
 [<InlineData("imgur_jpeg", "kpics/gq7v1p.jpg")>]
 [<InlineData("redgifs", "kpopfap/gqcm6j.webm")>]
-[<InlineData("youtube", "Documentaries/gqxyzb.mp4")>]
-[<InlineData("v.reddit", "PewdiepieSubmissions/grb69z.mp4")>]
+[<InlineData("youtube", "Documentaries/gqxyzb.webm")>]
+[<InlineData("v.reddit", "PewdiepieSubmissions/grb69z.webm")>]
 let ``Get Path`` name (path: string) =
    let post = loadPost name
    
@@ -89,8 +89,8 @@ let ``Is Known`` name (known: UrlMethodType) =
 [<InlineData("gfycat", "reddit/kpopfap/gqcord.webm", "https://gfycat.com/presentdangerousdromedary")>]
 [<InlineData("imgur_jpeg", "reddit/kpics/gq7v1p.jpg", "https://i.imgur.com/fXLMjfp.jpg")>]
 [<InlineData("redgifs", "reddit/kpopfap/gqcm6j.webm", "https://redgifs.com/watch/ripesnivelingfiddlercrab")>]
-[<InlineData("youtube", "reddit/Documentaries/gqxyzb.mp4", "https://www.youtube.com/watch?v=oLkdqptmfng")>]
-[<InlineData("v.reddit", "reddit/PewdiepieSubmissions/grb69z.mp4", "https://v.redd.it/42j6r7i8z7151")>]
+[<InlineData("youtube", "reddit/Documentaries/gqxyzb.webm", "https://www.youtube.com/watch?v=oLkdqptmfng")>]
+[<InlineData("v.reddit", "reddit/PewdiepieSubmissions/grb69z.webm", "https://v.redd.it/42j6r7i8z7151")>]
 let ``Get Download Post`` name path url =
     let post = loadPost name
     let expectedDownload =
@@ -127,7 +127,7 @@ let ``Get Download Post`` name path url =
 )>]
 [<InlineData(
     "youtube",
-    "Documentaries/gqxyzb.mp4",
+    "Documentaries/gqxyzb.webm",
     "https://old.reddit.com/r/Documentaries/comments/gqxyzb/forbidden_tattoos_korea_and_japans_illegal/",
     "5/26/2020 10:23:26 PM",
     "Documentaries",
@@ -135,7 +135,7 @@ let ``Get Download Post`` name path url =
 )>]
 [<InlineData(
     "v.reddit",
-    "PewdiepieSubmissions/grb69z.mp4",
+    "PewdiepieSubmissions/grb69z.webm",
     "https://old.reddit.com/r/PewdiepieSubmissions/comments/grb69z/my_dad_loves_lwiay_make_him_noticed_it_would_make/",
     "5/27/2020 10:37:03 AM",
     "PewdiepieSubmissions",
