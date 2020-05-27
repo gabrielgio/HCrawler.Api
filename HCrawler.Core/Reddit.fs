@@ -13,7 +13,8 @@ let redditUrl = "https://old.reddit.com"
 let reddit = "reddit"
 
 let gfycatRegex = "^.*gfycat.com.*$"
-let reddJpegRegex = "^.*i\\.redd\\.it.*\\.(jpg|jpeg)$"
+let iredditRegex = "^.*i\\.redd\\.it.*\\.(jpg|jpeg)$"
+let vredditRegex = "^.*v\\.redd\\.it.*$"
 let imgurJpegRegex = "^.*i\\.imgur\\.com.*\\.(jpg|jpeg)$"
 let redgifsJpegRegex = "^.*redgifs\\.com.*$"
 let youtubeRegex = "^.*\\.youtube\\.com.*$"
@@ -36,12 +37,12 @@ let matchRegex input pattern =
     Regex.IsMatch(input, pattern)
     
 let isHttp url =
-    [|  reddJpegRegex; imgurJpegRegex |]
+    [|  iredditRegex; imgurJpegRegex |]
     |> Array.map (matchRegex (url))
     |> Array.reduce (fun x y -> x || y)
     
 let isProcess url =
-    [| redgifsJpegRegex; gfycatRegex; youtubeRegex |]
+    [| redgifsJpegRegex; gfycatRegex; youtubeRegex; vredditRegex |]
     |> Array.map (matchRegex (url))
     |> Array.reduce (fun x y -> x || y)
 
@@ -59,11 +60,12 @@ let (|Regex|_|) pattern input =
 
 let getPath (root: Post.Root) =
     match root.Url with
-    | Regex reddJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
+    | Regex iredditRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
+    | Regex vredditRegex -> sprintf "%s/%s.mp4" root.Subreddit.DisplayName root.Id
     | Regex imgurJpegRegex -> sprintf "%s/%s.jpg" root.Subreddit.DisplayName root.Id
     | Regex gfycatRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
     | Regex redgifsJpegRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
-    | Regex youtubeRegex -> sprintf "%s/%s.webm" root.Subreddit.DisplayName root.Id
+    | Regex youtubeRegex -> sprintf "%s/%s.mp4" root.Subreddit.DisplayName root.Id
 
 let getDownloadPost root =
     { Path = getPath root |> sprintf "%s/%s" reddit

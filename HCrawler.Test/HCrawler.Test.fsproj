@@ -39,7 +39,7 @@
       <Content Include="Data\Instagram\video.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
-      <Content Include="Data\Reddit\redd_jpeg.json">
+      <Content Include="Data\Reddit\i.reddit.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="Data\Reddit\gfycat.json">
@@ -55,6 +55,9 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="Data\Reddit\youtube.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Data\Reddit\v.reddit.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <Content Include="ProviderData\instagram.json" />

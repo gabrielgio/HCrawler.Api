@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HCrawler.Core;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,28 @@ namespace HCrawler.Api
             return false;
         }
 
+        private string GetArguments(string url, string fullPath)
+        {
+            if (Regex.IsMatch(url, Reddit.vredditRegex))
+            {
+                return $" -f 'bestvideo+bestaudio' --merge-output-format mp4 --output {fullPath} {url}";
+            }
+            if (Regex.IsMatch(url, Reddit.youtubeRegex))
+            {
+                return $" -f 'bestvideo[ext=webm]+bestaudio[ext=m4a]' --merge-output-format mp4 --output {fullPath} {url}";
+            }
+            if (Regex.IsMatch(url, Reddit.gfycatRegex))
+            {
+                return $" -f best  --output {fullPath} {url}";
+            }
+            if (Regex.IsMatch(url, Reddit.redgifsJpegRegex))
+            {
+                return $" -f best  --output {fullPath} {url}";
+            }
+
+            return $" -f best --output {fullPath} {url}";
+        }
+
         public async Task downloadHttp(Payloads.Download download)
         {
             if (CreatAndGetFullPath(download, out var fullPath))
@@ -52,8 +75,7 @@ namespace HCrawler.Api
             var process = new Process();
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.FileName = "youtube-dl";
-            process.StartInfo.Arguments =
-                $" -f best --merge-output-format webm --output {fullPath} {download.Url}";
+            process.StartInfo.Arguments = GetArguments(download.Url, fullPath);
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardInput = true;
