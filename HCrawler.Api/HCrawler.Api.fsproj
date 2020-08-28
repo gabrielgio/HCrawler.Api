@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    
+    <ItemGroup>
+        <Compile Include="TaskBuilder.fs" />
+        <Compile Include="Controllers\ImagesController.fs" />
+        <Compile Include="Startup.fs" />
+        <Compile Include="Program.fs" />
+        <Content Include="..\Dockerfile">
+          <Link>Dockerfile</Link>
+        </Content>
+        <Content Include="..\.gitlab-ci.yml">
+          <Link>.gitlab-ci.yml</Link>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HCrawler.Core\HCrawler.Core.fsproj" />
+      <ProjectReference Include="..\HCrawler.DB\HCrawler.DB.csproj" />
+    </ItemGroup>
+
+</Project>

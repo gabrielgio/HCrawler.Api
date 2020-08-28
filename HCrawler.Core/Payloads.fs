@@ -26,6 +26,7 @@ type StoreImage =
       Url: string
       CreatedOn: DateTime }
 
+[<CLIMutable>]
 type PageFilter =
     { Size: int
       Checkpoint: Nullable<DateTime>

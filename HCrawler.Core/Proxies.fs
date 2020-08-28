@@ -13,6 +13,7 @@ type Profile =
       Url: string
       DetailedSource: Source }
     
+[<CLIMutable>]
 type Image =
     { Id: int
       Path: string
