@@ -6,7 +6,6 @@
 
     
     <ItemGroup>
-        <Compile Include="TaskBuilder.fs" />
         <Compile Include="Controllers\ImagesController.fs" />
         <Compile Include="Startup.fs" />
         <Compile Include="Program.fs" />
