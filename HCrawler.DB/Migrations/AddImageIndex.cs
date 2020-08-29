@@ -2,7 +2,6 @@ using FluentMigrator;
 
 namespace HCrawler.DB.Migrations
 {
-
     [Migration(202005080008, "add image CreatedOn index")]
     public class AddImageIndex : Migration
 

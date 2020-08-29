@@ -8,17 +8,17 @@ namespace HCrawler.DB
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var serviceProvider = CreateServices();
 
             using var scope = serviceProvider.CreateScope();
-            
+
             UpdateDatabase(scope.ServiceProvider);
         }
 
         /// <summary>
-        /// Configure the dependency injection services
+        ///     Configure the dependency injection services
         /// </summary>
         private static IServiceProvider CreateServices()
         {

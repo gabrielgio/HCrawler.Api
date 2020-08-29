@@ -18,26 +18,6 @@ namespace HCrawler.DB.Repositories
             _connection = connection;
         }
 
-        private string PushNameFilter(int? name)
-        {
-            if (name is object)
-            {
-                return $@"AND P.""Id"" = '{name.ToString()}'";
-            }
-
-            return string.Empty;
-        }
-
-        private string PushSourceFilter(int? source)
-        {
-            if (source is object)
-            {
-                return $@"AND S.""Id"" = '{source.ToString()}'";
-            }
-
-            return string.Empty;
-        }
-
         public async Task<IEnumerable<Proxies.Image>> getAllAsync(Payloads.PageFilter pageFilter)
         {
             var checkpoint = pageFilter.Checkpoint ?? DateTime.MaxValue;
@@ -151,6 +131,26 @@ namespace HCrawler.DB.Repositories
             LIMIT 1
             ";
             return _connection.QuerySingleAsync<int>(sql, new {sourceName});
+        }
+
+        private string PushNameFilter(int? name)
+        {
+            if (name is object)
+            {
+                return $@"AND P.""Id"" = '{name.ToString()}'";
+            }
+
+            return string.Empty;
+        }
+
+        private string PushSourceFilter(int? source)
+        {
+            if (source is object)
+            {
+                return $@"AND S.""Id"" = '{source.ToString()}'";
+            }
+
+            return string.Empty;
         }
     }
 }

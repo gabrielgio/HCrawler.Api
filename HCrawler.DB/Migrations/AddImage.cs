@@ -47,10 +47,10 @@ namespace HCrawler.DB.Migrations
                 Delete.Table("__EFMigrationsHistory");
             }
         }
-        
+
         private void CreateableIfExists(string schemaName, string tableName)
         {
-            this.Execute.Sql($"DROP TABLE IF EXISTS [{schemaName}].[{tableName}];");
+            Execute.Sql($"DROP TABLE IF EXISTS [{schemaName}].[{tableName}];");
         }
 
         public override void Down()

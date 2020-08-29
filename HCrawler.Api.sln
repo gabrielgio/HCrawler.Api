@@ -8,6 +8,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HCrawler.Core", "HCrawler.C
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HCrawler.Api", "HCrawler.Api\HCrawler.Api.fsproj", "{086C199D-1192-4263-8C11-B00516227BE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCrawler.Consumers", "HCrawler.Consumers\HCrawler.Consumers.csproj", "{C23346A5-F10F-4484-AB46-FEC5AB94E377}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{086C199D-1192-4263-8C11-B00516227BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{086C199D-1192-4263-8C11-B00516227BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{086C199D-1192-4263-8C11-B00516227BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23346A5-F10F-4484-AB46-FEC5AB94E377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23346A5-F10F-4484-AB46-FEC5AB94E377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23346A5-F10F-4484-AB46-FEC5AB94E377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23346A5-F10F-4484-AB46-FEC5AB94E377}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
