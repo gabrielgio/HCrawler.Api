@@ -10,9 +10,5 @@ open FSharp.Control.Tasks.V2
 type ImagesController(image: Image) =
     inherit ControllerBase()
 
-
     [<HttpGet>]
-    member __.Get([<FromQuery>]filter: PageFilter) =
-        task {
-            return! image.getAllAsync filter
-        }
+    member __.Get([<FromQuery>] filter: PageFilter) = image.getAllAsync filter
