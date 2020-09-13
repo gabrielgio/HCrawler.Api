@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HCrawler.Core\HCrawler.Core.fsproj" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.1"/>
   </ItemGroup>
-
+  
   <ItemGroup>
-    <PackageReference Include="RabbitMQ.Client" Version="6.0.0" />
+    <ProjectReference Include="..\HCrawler.Core\HCrawler.Core.fsproj"/>
   </ItemGroup>
 
 </Project>

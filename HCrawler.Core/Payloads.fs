@@ -2,6 +2,7 @@ module HCrawler.Core.Payloads
 
 open System
 
+[<CLIMutable>]
 type CreateImage =
     { ImagePath: string
       ImageUrl: string
@@ -11,9 +12,7 @@ type CreateImage =
       SourceName: string
       SourceUrl: string }
 
-type StoreSource =
-    { Name: string
-      Url: string }
+type StoreSource = { Name: string; Url: string }
 
 type StoreProfile =
     { SourceId: int
@@ -33,6 +32,4 @@ type PageFilter =
       Source: Nullable<int>
       Profile: Nullable<int> }
 
-type Download =
-    { Path: string
-      Url: string }
+type Download = { Path: string; Url: string }

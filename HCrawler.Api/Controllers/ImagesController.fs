@@ -11,4 +11,7 @@ type ImagesController(image: Image) =
     inherit ControllerBase()
 
     [<HttpGet>]
-    member __.Get([<FromQuery>] filter: PageFilter) = image.getAllAsync filter
+    member __.Get([<FromQuery>] filter) = image.getAllAsync filter
+    
+    [<HttpPost>]
+    member __.Post([<FromBody>] createImage) = image.createImageAsync createImage

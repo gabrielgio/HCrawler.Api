@@ -13,6 +13,7 @@ open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Npgsql
 
+
 type Startup(configuration: IConfiguration) =
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -51,4 +52,3 @@ type Startup(configuration: IConfiguration) =
         app.UseEndpoints(fun endpoints -> endpoints.MapControllers() |> ignore)
         |> ignore
 
-    member val Configuration: IConfiguration = null with get, set

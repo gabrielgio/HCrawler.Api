@@ -13,9 +13,9 @@ namespace HCrawler.Consumers
     public class Downloader : IDownloader
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
 
-        public Downloader(IHttpClientFactory httpClientFactory, IHostingEnvironment environment)
+        public Downloader(IHttpClientFactory httpClientFactory, IWebHostEnvironment environment)
         {
             _httpClientFactory = httpClientFactory;
             _environment = environment;
